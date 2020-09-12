@@ -1,0 +1,295 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="Alor-Shathi - Educational Application">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="shortcut icon" type="image/png" href="img/logo/Logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Web Fonts  -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800" rel="stylesheet"
+        type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Cabin:300,400,500,600" rel="stylesheet" type="text/css">
+
+    <!-- Libs CSS -->
+    <!-- <script src="lib/jquery/dist/jquery.min.js"></script> -->
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/streamline-icon.css" rel="stylesheet" />
+    <link href="css/v-nav-menu.css" rel="stylesheet" />
+    <link href="css/v-portfolio.css" rel="stylesheet" />
+    <link href="css/v-blog.css" rel="stylesheet" />
+    <!-- <link href="css/v-animation.css" rel="stylesheet" /> -->
+    <link href="css/v-bg-stylish.css" rel="stylesheet" />
+    <link href="css/v-shortcodes.css" rel="stylesheet" />
+    <link href="css/theme-responsive.css" rel="stylesheet" />
+    <link href="plugins/owl-carousel/owl.theme.css" rel="stylesheet" />
+    <link href="plugins/owl-carousel/owl.carousel.css" rel="stylesheet" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="themes/6/js-image-slider.css" rel="stylesheet" type="text/css" />
+    <script src="themes/6/mcVideoPlugin.js" type="text/javascript"></script>
+    <script src="themes/6/js-image-slider.js" type="text/javascript"></script>
+    <link href="generic.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" type="text/css" href="css/slider/css/style_slider.css" />
+    <script src="js/modernizr.custom.53451.js" type="text/javascript"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+    <!-- Current Page CSS -->
+    <!-- Custom CSS -->
+    <!-- Facebook Login  -->
+
+    <meta name="google-signin-client_id"
+        content="744386648886-lvc6s0q8stkd0go28nffcofhveet5ih1.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <link href="css/slid.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/custom.css">
+    <title>আলোর সাথী</title>
+    <script src="js/jssor.slider-27.5.0.min.js" type="text/javascript"></script>
+    <!-- <script src="js/theme-core.js"></script> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="js/jquery.flexslider-min.js"></script>
+    <script src="js/jquery.easing.js"></script>
+    <script src="js/jquery.fitvids.js"></script>
+    <script src="js/jquery.carouFredSel.min.js"></script>
+    <script src="js/jquery.validate.js"></script>
+    <script src="js/theme-plugins.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/imagesloaded.js"></script>
+    <script src="js/view.min9df2.js?auto"></script>
+    <script src="js/translate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="plugins/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script src="plugins/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+    <script src="layout.js" type="text/javascript"></script>
+    <script src="js/jquery.gallery.js" type="text/javascript"></script>
+    <link href="https://fonts.maateen.me/kalpurush/font.css" rel="stylesheet">
+
+
+
+    <script type="text/javascript">
+        var vid = document.getElementById("m")
+
+        $(document).ready(function () {
+            $('#dg-container').gallery();
+            $("#myCarousel").hide();
+        });
+
+        $('#dg-container').click(function () {
+            $("#dg-container").hide();
+            $('#myCarousel').show();
+        });
+
+
+        $('#back').click(function () {
+            vid.pause();
+
+            $("#dg-container").show();
+            $('#myCarousel').hide();
+
+        });
+    </script>
+    <script type="text/javascript">
+        (function () {
+
+            $('#carousel-item').carousel({
+                interval: 3000
+            });
+        }());
+
+        (function () {
+            $('.carousel-multiItem  .item').each(function () {
+                var itemToClone = $(this);
+
+                for (var i = 1; i < 2; i++) {
+
+                    itemToClone = itemToClone.next();
+
+                    if (!itemToClone.length) {
+                        itemToClone = $(this).siblings(':first');
+                    }
+
+                    itemToClone.children(':first-child').clone()
+                        .addClass("cloneditem-" + (i))
+                        .appendTo($(this));
+
+                    $(".carousel-multiItem ").find(".item").css("transition", "   500ms ease-in-out all  ")
+                        .css("transition", "  500ms ease-in-out all").css("backface-visibility", "visible")
+                        .css("transform", "none!important")
+
+
+
+                }
+            });
+        }());
+
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) {
+                myIndex = 1
+            }
+            x[myIndex - 1].style.display = "block";
+            setTimeout(carousel, 2500); // Change image every 2 seconds
+        }
+    </script>
+    <style>
+        .mySlides {
+            display: none;
+            margin-top: 0px !important;
+            margin-bottom: 0px !important;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="header-container">
+        <header class="header fixed clearfix">
+            <div class="col-md-12">
+
+                <div class="col-sm-offset-1">
+                    <div class="logo">
+                        <a href="/">
+                            <img alt="Allor Shathi" src="img/logo/Logo2o.gif" style="width: 95px;"
+                                data-logo-height="35">
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="navbar-collapse nav-main-collapse collapse">
+
+                    <!--End Header Search-->
+                    <!--Main Menu-->
+
+
+                    <nav class="nav-main mega-menu; col-md-10">
+
+                        <ul class="nav nav-pills nav-main" id="mainMenu">
+
+
+                            <li>
+                                <a class="dropdown-toggle" name="translate" caption="home" href="/"
+                                    style="text-align:center">Home</a>
+                            </li>
+
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" name="translate" caption="aboutUs" href="#"
+                                    style="text-align:center">About Us <i class="fa fa-caret-down"></i></a>
+
+                            </li>
+
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" name="translate" caption="product" href="product"
+                                    style="text-align:center">Product <i class="fa fa-caret-down"></i></a>
+
+                            </li>
+                            <li>
+                                <a class="dropdown-toggle" name="translate" caption="faq" href="faq.html"
+                                    style="text-align:center">FAQ </a>
+
+
+                            </li>
+                            <li>
+                                <a class="dropdown-toggle" name="translate" caption="contactUs" href="contact.html"
+                                    style="text-align:center"> Contact Us </a>
+
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" name="translate" caption="support" href="customer"
+                                    style="text-align:center">Support <i class="fa fa-caret-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-toggle" name="translate" caption="customerCare"
+                                            href="customer"
+                                            style="font-family: 'Kalpurush', sans-serif; text-align:center;">Customer
+                                            Care <i class="fa fa-caret-down"></i></a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-toggle" name="translate" caption="achivement" href="achivement.html"
+                                    style="text-align:center">Achivement </a>
+
+                            </li>
+
+
+                            <li>
+
+                            <li class="dropdown">
+
+                                <a href="index" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                    aria-expanded="false">
+                                    <img src="img/language.svg" style="width: 18px;" data-logo-height="120"><b
+                                        name="translate" caption="lang"
+                                        style="font-family: 'Kalpurush', sans-serif; font-size:17px;font-weight:400"><span>&nbsp;&nbsp;ভাষা</span></b>
+                                </a>
+                                <ul class="dropdown-menu" role="button">
+                                    <li><a href="?lang=tr" class="dropdown-toggle" value="0">বাংলা</a></li>
+
+                                    <li><a href="?lang=en" class="dropdown-toggle" value="1">English</a></li>
+                                </ul>
+
+                            </li>
+
+
+                            <li>
+                                <a href="https://play.google.com/store/apps">
+
+                                    <img src="img/download.svg" style="width: 18px;" data-logo-height="100"><b
+                                        name="translate" caption="down"
+                                        style="font-family: 'Kalpurush', sans-serif; font-size:17px;font-weight:400"><span>&nbsp;&nbsp;&nbsp;&nbsp;ডাউনলোড
+                                            অ্যাপ</span></b>
+                                </a>
+
+                            </li>
+
+
+                        </ul>
+
+
+                    </nav>
+                    <!--End Main Menu-->
+
+                </div>
+                <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse"
+                    data-target=".nav-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+
+        </header>
+    </div>
+    <div>
+
+
+    </div>
+
+
+
+
+</body>
+
+</html>

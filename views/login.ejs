@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" href="/css/main.css" />
+	 <!-- <link  href="/css/style.css" rel="stylesheet" />  -->
+<!-- 
+	 <script type="text/javascript">
+
+if(<%=message%> ==='eoor'){
+
+	//	function response() {
+		//  var data = <%- message %> ;
+
+		  alert("Inavlid");
+	}
+	//	alert-danger("Inavlid");
+		//  document.write(data);
+	//	}
+		</script> -->
+
+</head>
+<body class="login-page hold-transition">
+<div class="container">
+	<div class="login-box">
+		<div class="login-box-body">
+			
+				<form action="/login" method="post"> 
+				<fieldset>
+					<h4 class="text-center">Login</h4>
+
+					<% if(message === 'error') { %>
+					
+					 <div align="center" >
+							<div class="alert alert-danger">
+								Invalid UserName or Password
+							</div>
+						</div>  
+				 <% } %>  
+					</br>
+					
+					<div class="form-group has-feedback">
+						<input type="text" name="name" id="name" class="form-control"
+							   placeholder="Name" required="true" autofocus="true"/>
+					</div>
+				</br>
+					<div class="form-group has-feedback">
+						<input type="password" name="password" id="password" class="form-control"
+							   placeholder="Password" required="true"/>
+					</div>
+				</br>
+					<button type="submit" name="btnLogin" class="btn btn-block btn-social btn-facebook btn-flatflat"><i class="fa fa-check"></i>Sign In</button>
+				</br>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>

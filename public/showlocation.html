@@ -1,0 +1,86 @@
+﻿<html>
+
+<head>
+   
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#headerDiv").load("header.html");
+            $("#footerDiv").load("footer.html");
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        var lat = '';
+        var long = '';
+
+        function initMap() {
+            var url_string = window.location.href; //window.location.href
+            var url = new URL(url_string);
+            lat = url.searchParams.get("lat");
+            long = url.searchParams.get("long");
+
+            var mapProp = {
+                center: new google.maps.LatLng(parseFloat(lat), parseFloat(long)),
+                zoom: 16,
+            };
+            var map = new google.maps.Map(document.getElementById("map"), mapProp);
+
+            var marker = new google.maps.Marker({
+                position: mapProp,
+                map: map
+            });
+
+        }
+    </script>
+
+    </script>
+</head>
+
+<body>
+    <div id="headerDiv"></div>
+    <div class="v-page-heading v-bg-stylish v-bg-stylish-v1" style="background-color:white">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="heading-text" style="color:white">
+                        <h1 class="entry-title">Customer Care</h1>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="container" style="background-color:white">
+        <div class="row fw-row">
+            <div class="v-gmap-widget fullscreen-map col-sm-12">
+                <div class="v-wrapper">
+                    <div class="v-map-wrap">
+
+                        <div id="map" class="map-canvas" style="width: 100%; height: 450px;"
+                            data-address="ACI Center, Dhaka" data-maptype="roadmap" data-mapcolor=""
+                            data-mapsaturation="color" data-pinimage=""></div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="background-color:white">
+            <div class="col-sm-12">
+                <a href="customer" class="btn btn-link" style="color:black; font-family: Calibri"><i
+                        class="fa fa-backward"></i>&nbsp; Back To Customer Cares</a>
+            </div>
+        </div>
+    </div>
+
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4r4EPy0EveDAAokiJIcsc5HYCbJrQyYs&callback=initMap">
+    </script>
+
+    <div id="footerDiv"></div>
+</body>
+
+</html>

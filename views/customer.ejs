@@ -1,0 +1,79 @@
+﻿
+<html>
+
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#headerDiv").load("header.html");
+            $("#footerDiv").load("footer.html");
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        function myFunction(lat, long) {
+            var lt = lat;
+            var ln = long;
+           
+            window.location.href = "showlocation.html?lat=" + lt + "&long=" + ln;
+        }
+    </script>
+      
+        <link href="public/plugins/owl-carousel/owl.theme.css" rel="stylesheet" />
+    <link href="public/plugins/owl-carousel/owl.carousel.css" rel="stylesheet" /> 
+
+</head>
+
+<body>
+    <div id="headerDiv"></div>
+<div>
+    <div class="v-page-heading v-bg-stylish v-bg-stylish-v1">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="heading-text" style="background-color:#f7f3fb">
+                        <h1 caption="service" class="entry-title">
+                            <br />
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="container" style="background-color:#f7f3fb">
+      
+            <div class="carousel-wrap text-center" data-plugin-options="{items: 3, singleItem: false,navigation: true, pagination: false}">
+                  
+
+                <% customer.forEach(function(user){ %>
+                   
+                <div class="item"
+                    style="border: white .5px solid; width:300px; height: 260px; margin: 4px; padding-left: 10px; box-shadow: 0px 3px 3px  #ccc; color:black; font-family: 'Kalpurush', sans-serif; border-radius: 25px; background-color:white; ">
+
+                    <h3 name="translate" style="margin: 30px 0"><%= user.name %></h3>
+                    <div>
+                        <address style="color:black; font-size:12px; font-family: 'Kalpurush', sans-serif; ">
+                            <b name="translate" caption="address">Address:</b> <span
+                                name="translate"><%= user.address %> </span><br />
+                            <b name="translate" caption="contact">Contact:</b><%= user.phone %>
+                            <br />
+                            <br />
+
+                            <a href="javascript:myFunction(<%= user.lat %>,<%= user.long %>)">Show location</a>
+                        </address>
+
+                    </div>
+
+                
+        </div>
+                <% })%>
+    
+        </div>
+    </div>
+</div>
+    <div id="footerDiv"></div>
+</body>
+
+</html>

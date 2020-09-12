@@ -1,0 +1,47 @@
+﻿<html>
+<head>
+     <!-- <embed type="text/html" src="header.html"> -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script> 
+            $(function(){
+                $("#headerDiv").load("header.html");
+                $("#footerDiv").load("footer.html");
+            });  
+        </script>
+</head>
+<body>
+        <div id="headerDiv"></div>
+
+<div class="container" id=" container" style="color:white">
+    <div class="v-page-heading v-bg-stylish v-bg-stylish-v1">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="heading-text">
+                        <h1 class="entry-title">Customer Care</h1>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row fw-row">
+        <div class="v-gmap-widget fullscreen-map col-sm-12">
+            <div class="v-wrapper">
+                <div class="v-map-wrap">
+                    <div class="map-canvas" style="width: 100%; height: 450px;" data-address="@Model.Name" data-zoom="16" data-maptype="roadmap" data-mapcolor="" data-mapsaturation="color" data-pinimage="@Url.Content("img/custom_map_pin.png")"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12" style="color:white">
+            <a href="customer"><i class="fa fa-backward" style="color:black"></i>Back</a>
+        </div>
+    </div>
+</div>
+<div id="footerDiv"></div>
+</body>
+
+</html>

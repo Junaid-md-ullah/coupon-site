@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+		<title>Coupon Site</title>
+    
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<script>
+			$(function () {
+				$("#headerDiv").load("head.html");
+				$("#sideDiv").load("sidebar.html");
+				$("#footerDiv").load("foot.html");
+			});
+		</script>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+		<div id="headerDiv"></div>
+		<div id="sideDiv"></div>
+<div class="content-wrapper" style="height: auto; min-height: 100%;">
+	<!--<section class="content-header">-->
+		<!--<h1>Add Category</h1>-->
+		<!--<ol class="breadcrumb">-->
+			<!--<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>-->
+			<!--<li class="active">Category</li>-->
+		<!--</ol>-->
+	<!--</section>-->
+	<section class="content">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+						<h3 class="box-title">Add Product</h3>
+					</div>
+					<form action="/save_product"  enctype="multipart/form-data" method="post"> 
+						<div class="box-body">
+					  
+						<div class="form-group">
+							<label>Model &nbsp;<span style="color:red;">*&nbsp;</span></label>
+							<input type="text"   name="model" id="model" class="form-control"  />
+						</div>
+					</br>
+					
+						<div class="form-group">
+							<label>Price &nbsp;<span style="color:red;">*&nbsp;&nbsp;&nbsp;&nbsp;</span></label>
+							<input class="form-control" name="price" id="price"   type="text"
+								   required="required"/>
+						</div>
+					</br>
+					<div class="form-group">
+						<label>Discount &nbsp;<span style="color:red;">*</span></label>
+						<input class="form-control"   name="discount" id="discount" 
+							   type="text" required="required"/>
+					</div>
+				</br>
+				<div class="form-group">
+					<label>Coupon &nbsp;<span style="color:red;">*</span></label>
+					<input class="form-control"   name="coupon" id="coupon " 
+						   type="text" required="required"/>
+				</div>
+			</br>
+						<div class="form-group">
+                                <label>Image&nbsp;&nbsp;<span style="color:red;">*</span></label>
+                                <input id="file" type="file" name="file" required="required" />
+                          </div>
+						</br>
+
+						<div class="box-footer">
+							<button type="submit" class="btn btn-add btn-primary"><i class="fa fa-check-circle"></i> Save
+								
+							</button>
+						</div>
+					</br>
+					</div>
+				</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+<div id="footerDiv"></div>
+<!-- <script type="text/javascript">
+	$("#categoryActive").addClass("active");
+	$("#categoryActive").parent().parent().addClass("treeview active");
+	$("#categoryActive").parent().addClass("in");
+</script> -->
+</body>
+</html>

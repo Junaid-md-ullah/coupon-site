@@ -1,0 +1,249 @@
+﻿<html>
+<head>
+     <!-- <embed type="text/html" src="header.html"> -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script> 
+            $(function(){
+                $("#headerDiv").load("header.html");
+                $("#footerDiv").load("footer.html");
+            });  
+        </script>
+</head>
+<body>
+        <div id="headerDiv"></div>
+
+
+<div style="background-color: white">
+
+    <div style="background-color: white">
+
+
+        <div>
+            <img class="mySlides" src="img/banner/banner1.jpg" style="width:1500%">
+            <img class="mySlides" src="img/banner/banner3.jpg" style="width:1500%">
+
+        </div>
+
+
+       
+    </div>
+
+    <div id="container" class="container" style="background-color: white;">
+
+        <div class="row">
+
+
+            <table width="100%">
+
+                <tr>
+                    <td>
+
+
+                        <div>
+                            <div>
+
+                                <img src="img/ImagesV3/001.png">
+
+                            </div>
+                            <div style="text-align:center">
+
+                                <img src="img/dot1.png">
+
+                            </div>
+
+                            <div class="team-title">
+                                <h5 style="color:#7b48ad; font-size: 15px;  font-weight: 600; text-align: center;">Q150</h5>
+                                <p style="color:black; font-family: 'Pompadour', sans-serif; font-size: 13px;   font-weight: 400; text-align: center;"><b>BDT 40,650</b></p>
+
+
+
+                                <p style="text-align: center; color:#7b48ad;"><a href="@Url.Action("Detail", "Product", new RouteValueDictionary(new { id = 1 }))" data-animation="fade-from-bottom" data-delay="100">View Details</a></p>
+
+                               
+
+                                <button class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" onclick="openForm()" style="text-align: center;">Open Form</button>
+
+
+                                <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="true"></div>
+
+
+                                <div class="form-popup" id="myForm">
+
+                                    <div class="form-container">
+                                        <div style="text-align:center">
+                                            <img src="~/img/cart.png">
+                                        </div>
+                                        <label name="translate" caption="name" for="name"><b>Name</b></label>
+                                        <input type="text" name="Name" value="" id="name1" required>
+
+
+                                        <label name="translate" caption="email" for="email"><b>Email</b></label>
+                                        <input type="text" name="Email" value="" id="email" required>
+
+                                        <label name="translate" caption="phone" for="phone"><b>Phone</b></label>
+                                        <input type="text" name="phone" value="" id="phone" required>
+
+
+
+                                        <label name="translate" caption="address" for="address"><b>Address</b></label>
+                                        <textarea maxlength="5000" rows="3" class="form-control" name="Adress" id="Textarea1" required style="color:#777777; width: 300px; border-radius:10px"></textarea>
+
+
+                                        <button name="submit" type="submit" id="Button1" names="translate" caption="order" class="btn" onclick="sendMail()"> Send Message</button>
+
+
+                                        <button type="button" names="translate" caption="close" class="btn cancel" onclick="closeForm()">Close</button>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+                    </td>
+
+                    <td class="firstcol">
+                        <div>
+                            <div>
+
+                                <img src="img/ImagesV3/002.png">
+
+                            </div>
+                            <div style="text-align:center">
+
+                                <img src="img/dot2.png">
+
+                            </div>
+
+                            <div class="team-title">
+                                <h5 style="color:#7b48ad; font-size: 15px;  font-weight: 600; text-align: center;">Q60</h5>
+                                <p style="color:black; font-family: 'Pompadour', sans-serif; font-size: 13px;   font-weight: 400; text-align: center;"><b>BDT 50,650</b></p>
+
+
+                                <p style="text-align: center; color:#7b48ad;"><a href="@Url.Action("Detail", "Product", new RouteValueDictionary(new { id = 2 }))" data-animation="fade-from-bottom" data-delay="100">View Details</a></p>
+                                <button class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" onclick="openForm()" style="text-align: center;">Open Form</button>
+
+
+                                <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="true"></div>
+
+                               
+
+
+                                <div class="form-popup" id="myForm">
+
+                                    <form action="mailto:sec.tanzil13@gmail.com" method="post" enctype="text/plain" class="form-container">
+                                        <h1>Order</h1>
+
+                                        <label name="translate" caption="name" for="name"><b>Name</b></label>
+                                        <input type="text" name="Name" value="" id="name1" required>
+
+
+                                        <label name="translate" caption="email" for="email"><b>Email</b></label>
+                                        <input type="text" name="Email" value="" id="email" required>
+
+                                        <label name="translate" caption="address" for="address"><b>Address</b></label>
+                                        <textarea maxlength="5000" rows="3" class="form-control" name="Adress" id="Textarea1" required style="color:#777777; width: 250px;"></textarea>
+
+
+                                        <button name="submit" type="submit" id="Button1" names="translate" caption="send_comment" class="btn"> Send Message</button>
+
+
+                                        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                       
+
+
+
+
+                    </td>
+
+
+
+                    <td class="firstcol">
+                        <div>
+                            <div>
+
+                                <img src="img/ImagesV3/003.png">
+
+                            </div>
+                            <div style="text-align:center">
+
+                                <img src="img/dot1.png">
+
+                            </div>
+
+                            <div class="team-title">
+                                <h5 style="color:#7b48ad; font-size: 15px;  font-weight: 600; text-align: center;">Q151</h5>
+                                <p style="color:black; font-family: 'Pompadour', sans-serif; font-size: 13px;   font-weight: 400; text-align: center;"><b>BDT 45,650</b></p>
+
+
+
+                                <p style="text-align: center; color:#7b48ad;"><a href="@Url.Action("Detail", "Product", new RouteValueDictionary(new { id = 2 }))" data-animation="fade-from-bottom" data-delay="100">View Details</a></p>
+
+                                <button class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" onclick="openForm()" style="text-align: center;">Open Form</button>
+
+
+                                <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="true"></div>
+
+                                
+
+
+                                <div class="form-popup" id="myForm">
+
+                                    <form action="mailto:sec.tanzil13@gmail.com" method="post" enctype="text/plain" class="form-container">
+                                        <h1>Order</h1>
+
+                                        <label name="translate" caption="name" for="name"><b>Name</b></label>
+                                        <input type="text" name="Name" value="" id="name1" required>
+
+
+                                        <label name="translate" caption="email" for="email"><b>Email</b></label>
+                                        <input type="text" name="Email" value="" id="email" required>
+
+                                        <label name="translate" caption="address" for="address"><b>Address</b></label>
+                                        <textarea maxlength="5000" rows="3" class="form-control" name="Adress" id="Textarea1" required style="color:#777777; width: 250px;"></textarea>
+
+
+                                        <button name="submit" type="submit" id="Button1" names="translate" caption="send_comment" class="btn"> Send Message</button>
+
+
+                                        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </td>
+                </tr>
+            </table>
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+<div id="footerDiv"></div>
+</body>
+
+</html>
+
+
+

@@ -1,0 +1,241 @@
+﻿<html>
+
+<head>
+    <!-- <embed type="text/html" src="header.html"> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#headerDiv").load("header.html");
+            $("#footerDiv").load("footer.html");
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="headerDiv"></div>
+
+    <div id="container" style="background-color:white">
+
+
+        <div class="container">
+
+        </div>
+
+        <div class="v-page-wrap no-top-spacing">
+            <div class="row fw-row">
+                <div class="v-gmap-widget fullscreen-map col-sm-12">
+                    <div class="v-wrapper">
+                        <div class="v-map-wrap">
+                            <div id="map" class="map-canvas" style="width: 100%; height: 450px;"
+                                data-address="ACI Center, Dhaka" data-maptype="roadmap" data-mapcolor=""
+                                data-mapsaturation="color" data-pinimage=""
+                                data-fulladress="245 Tejgaon Industrial Area, বীর উত্তম মীর শওকত সড়ক, Dhaka 1208.">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="v-comment-form">
+                        <div class="v-heading-v2" style=" font-size:16px; font-family: 'Kalpurush', sans-serif;">
+                            <h3 name="translate" caption="welcome_alorsathi">Welcome To AlorShathi</h3>
+                        </div>
+                        <p name="translate" caption="welcome_description" class="pull-bottom-small"
+                            style=" font-size:14px; font-family: 'Kalpurush', sans-serif;">
+                            Allor Sathi is the first and the largest Bangladeshi Educational application which offers
+                            highly effective, adaptive and engaging learning programs for students from classes 9-10.
+
+                            Allor sathi have proper contents for students who wants to cross the 80% barrier. It
+                            contains most updated, error free and most effective solutions which helps students to get
+                            better results.
+                        </p>
+
+
+                        <form method="post" enctype="text/plain">
+
+                            <div class="row">
+
+                                <div class="col-sm-12">
+                                    <label name="translate" caption="name"
+                                        style=" font-size:16px; font-family: 'Kalpurush', sans-serif;">Your name <span
+                                            class="required">*</span></label>
+                                    <input type="text" value="" maxlength="100" class="form-control" name="Name"
+                                        id="name" required>
+                                </div>
+
+                            </div>
+                            <div class="row">
+
+                                <div class="col-sm-12">
+                                    <label name="translate" caption="email"
+                                        style=" font-size:16px; font-family:'Kalpurush', sans-serif;">Your email address
+                                        <span class="required">*</span></label>
+                                    <input type="email" value="" maxlength="100" class="form-control" name="Email"
+                                        id="email1" required>
+                                </div>
+
+                            </div>
+                            <div class="row">
+
+                                <div class="col-sm-12">
+                                    <label name="translate" caption="telephone"
+                                        style=" font-size:16px; font-family:'Kalpurush', sans-serif;">Telephone</label>
+                                    <input type="text" value="" maxlength="11" minlength="8" class="form-control"
+                                        name="Telephone" id="website" required>
+                                </div>
+
+                            </div>
+                            <div class="row">
+
+                                <div class="col-sm-12">
+                                    <label name="translate" caption="comment"
+                                        style=" font-size:16px; width: 250px; font-family:'Kalpurush', sans-serif; ">Comment
+                                        <span class="required">*</span></label>
+                                    <textarea maxlength="5000" rows="3" class="form-control" name="Comment"
+                                        id="Textarea1" required style="color:#777777; width: 250px;"></textarea>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+
+                                    <button name="submit" type="submit" id="Button1" names="translate"
+                                        caption="send_comment" class="btn v-btn v-btn-default v-small-button"
+                                        style=" font-size:15px"><i class="fa fa-magic"></i> Send Message</button>
+
+
+                                </div>
+                            </div>
+
+                        </form>
+
+
+                        <!-- @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <hr />
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Comment, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(m => m.Comment, new { @class = "form-control" })
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" class="btn btn-default" value="Send" />
+                            </div>
+                        </div>
+                    } -->
+
+
+
+
+
+
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="v-heading-v2" style=" font-family:'Kalpurush', sans-serif; font-size:16px;">
+                        <h3 name="translate" caption="address_info">Address Info</h3>
+                    </div>
+                    <p name="translate" caption="address_details"
+                        style="font-size:14px; font-family:'Kalpurush', sans-serif;">
+                        ACI Centre, 245 Tejgaon, Dhaka 1208. Bangladesh
+                    </p>
+                    <div class="v-heading-v2" style=" font-family:'Kalpurush', sans-serif;font-size:16px;">
+                        <h3 name="translate" caption="phone_email">Phone & Email</h3>
+                    </div>
+                    <p name="translate" caption="phone_email_details" style="font-size:14px; font-family:Calibri">
+                        <b name="translate" caption="infomtion">Infomation:</b><a href="#" target="_blank"
+                            style="color:deepskyblue;font-family:'Kalpurush', sans-serif;font-size:16px">info@mystylusmobile.com</a><br />
+                        <b name="translate" caption="emil">Email:</b> <a href="#" target="_blank"
+                            style="color:deepskyblue;font-family:'Kalpurush', sans-serif;font-size:16px">info@mystylusmobile.com</a><br />
+                        <b name="translate" caption="phne">Mobile:</b> +88 01730 378 100<br />
+                    </p>
+                    <div class="v-heading-v2" style=" font-family:'Kalpurush', sans-serif; font-size:16px;">
+                        <h3 name="translate" caption="mailing_address">Mailing Address</h3>
+                    </div>
+                    <p name="translate" caption="mailing_address_details"
+                        style="font-size:14px; font-family:'Kalpurush', sans-serif;">
+                        Business Manager
+                        Mobile and Electronic
+                        Consumer Brand
+                        ACI Limited.
+                        Ninakabbo Level 11. 227/A
+                        Gulshan Tejgaon Link Road.
+                        Dhaka-1208
+                    </p>
+                    <div class="v-heading-v2" style=" font-family:'Kalpurush', sans-serif; font-size:16px;">
+                        <h3 name="translate" caption="find_us">Find us on</h3>
+                    </div>
+                    <ul class="social-icons standard circle">
+                        <li class="twitter"><a href="http://www.twitter.com/#" target="_blank"><i
+                                    class="fa fa-twitter"></i><i class="fa fa-twitter"></i></a></li>
+                        <li class="facebook"><a href="#" target="_blank"><i class="fa fa-facebook"></i><i
+                                    class="fa fa-facebook"></i></a></li>
+
+                        <li class="youtube"><a href="#" target="_blank"><i class="fa fa-youtube"></i><i
+                                    class="fa fa-youtube"></i></a></li>
+
+                        <li class="linkedin"><a href="#" target="_blank"><i class="fa fa-linkedin"></i><i
+                                    class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--Footer-Wrap-->
+    <!--End Footer-Wrap-->
+
+    </div>
+    <script>
+        function initMap() {
+            var mapProp = {
+                center: new google.maps.LatLng(23.7711704, 90.4087914),
+                zoom: 16,
+            };
+            var map = new google.maps.Map(document.getElementById("map"), mapProp);
+
+            var marker = new google.maps.Marker({
+                position: mapProp,
+                map: map
+            });
+
+
+        }
+    </script>
+
+
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4r4EPy0EveDAAokiJIcsc5HYCbJrQyYs&callback=initMap">
+    </script>
+    <div id="footerDiv"></div>
+
+</body>
+
+</html>

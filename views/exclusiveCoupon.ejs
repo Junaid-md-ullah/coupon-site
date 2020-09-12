@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    />
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+
+    <title>CouponSit</title>
+
+    <style type="text/css">
+      body {
+        background-color: #f0f0f0;
+      }
+
+      .search {
+        width: 50%;
+        position: relative;
+        display: flex;
+        margin: 0 auto;
+        /*margin-left: 21%;*/
+      }
+
+      .searchTerm {
+        width: 100%;
+        border: 3px solid #00b4cc;
+        border-right: none;
+        padding: 5px;
+        height: 36px;
+        border-radius: 5px 0 0 5px;
+        outline: none;
+        color: #9dbfaf;
+      }
+
+      .searchTerm:focus {
+        color: #00b4cc;
+      }
+
+      .searchButton {
+        width: 40px;
+        height: 36px;
+        border: 1px solid #00b4cc;
+        background: #00b4cc;
+        text-align: center;
+        color: #fff;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-size: 20px;
+      }
+
+      .checked {
+        color: orange;
+      }
+
+      @media only screen and (max-width: 600px) {
+        #navbarSupportedContent {
+          height: 100%;
+          z-index: 0.3;
+        }
+        .search {
+          padding-top: 15px;
+          width: 100%;
+          height: 100%;
+          margin: 0 auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- navbar Start-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light pl-10 pr-10">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <a id="logoId" class="navbar-brand" href="/"
+        ><h2 class="w-100">
+          <dt>Coupon<samp class="text-info">Sit</samp></dt>
+        </h2></a
+      >
+      <div class="collapse navbar-collapse w-100" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Stores
+            </a>
+            <div
+              class="dropdown-menu border-0"
+              aria-labelledby="navbarDropdownMenuLink"
+            >
+              <a class="dropdown-item" href="/allStores">All Stores</a>
+              <a class="dropdown-item" href="#">Link 2</a>
+              <a class="dropdown-item" href="#">Link 3</a>
+              <a class="dropdown-item" href="#">Link 4</a>
+              <a class="dropdown-item" href="#">Link 5</a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Catagories
+            </a>
+            <div
+              class="dropdown-menu border-0"
+              aria-labelledby="navbarDropdownMenuLink"
+            >
+              <a class="dropdown-item" href="#">Link 1</a>
+              <a class="dropdown-item" href="#">Link 2</a>
+              <a class="dropdown-item" href="#">Link 3</a>
+              <a class="dropdown-item" href="#">Link 4</a>
+              <a class="dropdown-item" href="#">Link 5</a>
+            </div>
+          </li>
+          <li class="nav-item" id="loginid">
+            <a class="nav-link" href="#">Exclusive Coupon</a>
+          </li>
+        </ul>
+
+        <!-- searchbar start -->
+        <div class="search">
+          <input
+            type="text"
+            class="searchTerm"
+            placeholder="What are you looking for?"
+            style="text-align: center"
+          />
+          <button type="submit" class="searchButton">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!-- navbar end-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card border-0" style="border-radius: 0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-3">
+                  <img src="" class="w-50 mx-auto d-block" />
+                </div>
+                <div class="col-md-9">
+                  <div class="row">
+                    <div class="col-md-8">
+                      <h5>Coupon Codes February 2020</h5>
+                      <p><%= shops.length %> “Company” Offers Available</p>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="float-right">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                      </div>
+                      <div class="float-right">
+                        <samp>4.3</samp><samp>(3699 Reviews)</samp>
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr class="border-3" />
+
+                  <div class="row">
+                    <div class="">
+                      <samp
+                        class="mr-3 bg-info text-white pt-1 pr-2 pb-1 pl-2 rounded"
+                        >All(33)</samp
+                      >
+                      <samp class="mr-3 bg-light pt-1 pr-2 pb-1 pl-2 rounded"
+                        >Codes(30)</samp
+                      >
+                      <samp class="mr-3 bg-light pt-1 pr-2 pb-1 pl-2 rounded"
+                        >Deals(3)</samp
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <% shops.map(function(shop){ %>
+        <div class="col-md-4 mt-3">
+          <div class="card border-0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-7 col-sm-6 d-flex justify-content-start">
+                  <div class="d-flex justify-content-around">
+                    <img class="w-25" src="<%= shop.image %>" />
+                    <p class="font-weight-bold" style="margin: auto">
+                      <%= shop.coupon[0].couponDetails %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <p>
+                    February Offer: Extra 10% OFF Noon Coupon Code On Everything
+                    + Free Delivery
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <button type="button" class="btn btn-info btn-sm btn-block">
+                    Show Coupon
+                  </button>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <a href="/singleShop/<%=shop._id%>">
+                    <p>View All Company Offers</p></a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%} )%>
+      </div>
+    </div>
+
+    <!-- Get In Touch start-->
+
+    <div class="row m-5">
+      <div class="col-md-12">
+        <div>
+          <h4 style="text-align: center; font-weight: bold">Get In Touch</h4>
+        </div>
+
+        <div>
+          <p style="text-align: center">
+            For all partnership queries & details, please click delow
+          </p>
+        </div>
+
+        <div style="text-align: center">
+          <button type="button" class="btn btn-info btn-lg">Contact Us</button>
+        </div>
+      </div>
+    </div>
+    <!-- Get In Touch start-->
+    <!-- main body end -->
+
+    <!-- footer strat -->
+    <!-- Footer -->
+    <footer
+      class="page-footer font-small unique-color-dark"
+      style="background-color: #ffffff"
+    >
+      <div>
+        <div class="container">
+          <!-- Grid row-->
+          <div class="row py-4 d-flex align-items-center">
+            <!-- Grid column -->
+            <div
+              class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0"
+            >
+              <h6 class="mb-0">Get connected with us on social networks!</h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-6 col-lg-7 text-center text-md-right">
+              <!-- Facebook -->
+              <a class="fb-ic" href="#">
+                <i class="fab fa-facebook-f white-text mr-4"> </i>
+              </a>
+              <!-- Twitter -->
+              <a class="tw-ic" href="#">
+                <i class="fab fa-twitter white-text mr-4"> </i>
+              </a>
+              <!-- Google +-->
+              <a class="gplus-ic" href="#">
+                <i class="fab fa-google-plus-g white-text mr-4"> </i>
+              </a>
+              <!--Linkedin -->
+              <a class="li-ic" href="#">
+                <i class="fab fa-linkedin-in white-text mr-4"> </i>
+              </a>
+              <!--Instagram-->
+              <a class="ins-ic" href="#">
+                <i class="fab fa-instagram white-text"> </i>
+              </a>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row-->
+        </div>
+      </div>
+      <hr />
+
+      <!-- Footer Links -->
+      <div class="container text-center text-md-left mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-3 col-xl-2 mx-auto mb-4">
+            <!-- Content -->
+            <h4 class="font-weight-bold">CouponSit</h4>
+            <hr
+              class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
+              style="width: 60px"
+            />
+            <p>
+              Here you can use rows and columns to organize your footer content.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase font-weight-bold">Quick Links</h6>
+            <hr
+              class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
+              style="width: 60px"
+            />
+            <p>
+              <a href="#!">All Stores</a>
+            </p>
+            <p>
+              <a href="#!">Catagories</a>
+            </p>
+            <p>
+              <a href="#!">Bank Offers</a>
+            </p>
+            <p>
+              <a href="#!">Exclusive Coupons</a>
+            </p>
+            <p>
+              <a href="#!">Blog</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase font-weight-bold">Stores</h6>
+            <hr
+              class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
+              style="width: 60px"
+            />
+            <p>
+              <a href="#!">GAP Coupons</a>
+            </p>
+            <p>
+              <a href="#!">Nissnass Coupons</a>
+            </p>
+            <p>
+              <a href="#!">Shein Coupons</a>
+            </p>
+            <p>
+              <a href="#!">Homebox Coupons</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase font-weight-bold">Information</h6>
+            <hr
+              class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
+              style="width: 60px"
+            />
+            <p>
+              <a href="#!">About Us</a>
+            </p>
+            <p>
+              <a href="#!">Help</a>
+            </p>
+            <p>
+              <a href="#!">Privacy</a>
+            </p>
+            <p>
+              <a href="#!">Terms</a>
+            </p>
+            <p>
+              <a href="#!">Contact Us</a>
+            </p>
+            <p>
+              <a href="#!">Partnership</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase font-weight-bold">Contact</h6>
+            <hr
+              class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
+              style="width: 60px"
+            />
+            <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+            <p><i class="fas fa-envelope mr-3"></i> info@example.com</p>
+            <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+            <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+      <!-- Footer Links -->
+
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">
+        © 2020 Copyright:
+        <a href="https://mdbootstrap.com/"> CouponSit.com</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+    <!-- footer end -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="text/javascript">
+      $(document).ready(function () {});
+    </script>
+
+    <script>
+      $(function () {
+        $('[data-toggle="popover"]').popover();
+      });
+    </script>
+  </body>
+</html>

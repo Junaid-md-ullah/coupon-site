@@ -1,0 +1,338 @@
+﻿<html>
+
+<head>
+    <!-- <embed type="text/html" src="header.html"> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#headerDiv").load("header.html");
+            $("#footerDiv").load("footer.html");
+        });
+    </script>
+</head>
+
+<body>
+    <div id="headerDiv"></div>
+
+    <div id="container" style="background-color: white">
+
+
+        <div style="background-color:white">
+            <img src="img/team.jpg" class="v-animation" data-animation="fade-from-bottom" data-delay="200">
+
+        </div>
+
+
+        <div class="container">
+
+        </div>
+
+        <div class="container">
+            <div class="col-sm-12">
+                <div class="col-sm-6">
+
+                    <div class="col-sm-6" style="margin-top: 30px;">
+                        <div class="card_l">
+                            <div class="card-section">
+                                <a href="#" class="card-section"><img width="180" heigth="130" src="img/team/monir.jpg"
+                                        class="img-responsive"
+                                        style="border-radius: 20px 20px 0px 0px; margin-left: 23px;"></a>
+                                <div class="data_l">
+                                    <div class="content">
+                                        <h4 class="title"
+                                            style="text-align:center; font-family: 'Kalpurush', sans-serif; color:white; ">
+                                            Md. Moniruzzaman</h4>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <h5 style="text-align:center"><a>Technical Lead</a></h5>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6" style="margin-top: 30px;">
+                        <p style="font-family: 'Kalpurush', sans-serif;font-size:12px; color:black">These are the best
+                            performer of this week in our Alorsathi application. You can also</p>
+                    </div>
+
+
+                </div>
+                <div class="col-sm-6">
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+
+            <div class="row">
+                <div class="row threed-section">
+                    <div class="col-md-12">
+
+
+                        <div class="carousel carousel-multiItem slide" id="carousel-item">
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 hover">
+
+                                        <div class="card">
+                                            <% back.forEach(function(user){ %>
+                                            <div class="col-xs-12 col-sm-6  ">
+
+                                                <div class="card-section">
+
+                                                    <a href="#" class="card-section"><img width="180" heigth="130"
+                                                            src=<%= user.image %> class="img-responsive"
+                                                            style="border-radius: 20px 20px 0px 0px;  margin-left: 30px;"></a>
+                                                    <div class="data_d">
+                                                        <div class="content">
+                                                            <h4 class="title"
+                                                                style="text-align:center; font-family: 'Kalpurush', sans-serif; color:white; ">
+                                                                <%= user.name %></h4>
+
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <% })%>
+
+                                            <h5 style="text-align:center; font-family: 'Kalpurush', sans-serif;">
+                                                <a>Back-End Developer</a></h5>
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 hover">
+                                        <div class="card">
+                                            <% android.forEach(function(user){ %>
+                                            <div class="col-xs-12 col-sm-6  ">
+
+                                                <div class="card-section">
+                                                    <a href="#" class="card-section"><img width="180" heigth="130"
+                                                            src=<%= user.image %> class="img-responsive "
+                                                            style="border-radius: 20px 20px 0px 0px;  margin-left: 30px;"></a>
+                                                    <div class="data_d">
+                                                        <div class="content">
+                                                            <h4 class="title"
+                                                                style="text-align:center; font-family: 'Kalpurush', sans-serif; color:white;">
+                                                                <%= user.name %></h4>
+
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <% })%>
+
+                                            <h5 style="text-align:center; font-family: 'Kalpurush', sans-serif;">
+                                                <a>Android Developer</a></h5>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 hover">
+                                            
+                                        <div class="card">
+                                                <% graphics.forEach(function(user){ %>
+
+                                            <div class="col-xs-12 col-sm-6  ">
+
+                                                <div class="card-section">
+                                                    <a href="#" class="card-section"><img width="180" heigth="130"
+                                                            src=<%= user.image %> class="img-responsive"
+                                                            style="border-radius: 20px 20px 0px 0px; margin-left: 30px;"></a>
+                                                    <div class="data_d">
+                                                        <div class="content">
+                                                            <h4 class="title"
+                                                                style="text-align:center; font-family: 'Kalpurush', sans-serif; color:white;">
+                                                                <%= user.name %></h4>
+
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        
+                                            <% })%>
+
+                                            <h5 style="text-align:center; font-family: 'Kalpurush', sans-serif;">
+                                                <a>Graphics Designer</a></h5>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                              
+                                <div class="item">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 hover">
+                                        <div class="card">
+
+                                            <% content.forEach(function(user){ %>
+                                            <div class="col-xs-12 col-sm-6  ">
+
+                                                <div class="card-section">
+                                                    <a href="#" class="card-section"><img width="180" heigth="130"
+                                                            src=<%= user.image %> class="img-responsive"
+                                                            style="border-radius: 20px 20px 0px 0px; margin-left: 30px;"></a>
+                                                    <div class="data_d">
+                                                        <div class="content">
+                                                            <h4 class="title"
+                                                                style="text-align:center; font-family: 'Kalpurush', sans-serif; color:white;">
+                                                                <%= user.name %></h4>
+
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <% })%>
+
+                                            <h5 style="text-align:center; font-family: 'Kalpurush', sans-serif;">
+                                                <a>Content Writer</a></h5>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                        <div class="col-xs-12 col-sm-6 col-md-6 hover">
+                                            <div class="card">
+    
+                                                <% editor.forEach(function(user){ %>
+                                                <div class="col-xs-12 col-sm-6  ">
+    
+                                                    <div class="card-section">
+                                                        <a href="#" class="card-section"><img width="180" heigth="130"
+                                                                src=<%= user.image %> class="img-responsive"
+                                                                style="border-radius: 20px 20px 0px 0px; margin-left: 30px;"></a>
+                                                        <div class="data_d">
+                                                            <div class="content">
+                                                                <h4 class="title"
+                                                                    style="text-align:center; font-family: 'Kalpurush', sans-serif; color:white;">
+                                                                    <%= user.name %></h4>
+    
+    
+                                                            </div>
+                                                        </div>
+    
+                                                    </div>
+    
+                                                </div>
+                                                <% })%>
+    
+                                                <h5 style="text-align:center; font-family: 'Kalpurush', sans-serif;">
+                                                    <a>Content Editor</a></h5>
+    
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="container">
+            <br>
+
+            <h4><a style="font-family: 'Kalpurush', sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;Festival</a></h4>
+            <br>
+        </div>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-6">
+
+
+
+
+                    <div class="col-lg-4 col-md-6"
+                        style="width: 100%; border:#ede7e7   .5px solid; margin: 4px; box-shadow: 0 3px 3px rgb(212, 197, 197);">
+                        <div class="grid">
+
+                            <div class="info p-4">
+                                <div class="festival">
+
+
+
+
+                                    <img src="img/birth.jpg">
+
+
+
+
+                                </div>
+
+                                <p class="item"
+                                    style="padding-left: 10px; color:black; font-family: 'Kalpurush', sans-serif;  background-color:white; font-size:15px; line-height:1.5; ">
+                                    <br />Subject</p>
+
+                                <p class="item"
+                                    style="height: 250px; margin: 4px; padding-left: 10px; color:black; font-family: 'Kalpurush', sans-serif;  background-color:white; font-size:12px; line-height:1.5; ">
+                                    <br />Onec consequat sapien amet leo cur sus rhoncus. Nullam dui mi Donec at nunc
+                                    enim. Proin at iaculis tellus...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-6">
+
+                    <div class="col-lg-4 col-md-6"
+                        style="width: 100%; border:#ede7e7   .5px solid; margin: 4px; box-shadow: 0 3px 3px rgb(212, 197, 197);">
+                        <div class="grid">
+
+                            <div class="info p-4">
+                                <div class="festival">
+
+                                    <img src="img/birth.jpg">
+
+                                </div>
+                                <p class="item"
+                                    style="padding-left: 10px; color:black; font-family: 'Kalpurush', sans-serif;  background-color:white; font-size:15px; line-height:1.5; ">
+                                    <br />Subject</p>
+                                <p class="item"
+                                    style="height: 250px; margin: 4px; padding-left: 10px; color:black; font-family: 'Kalpurush', sans-serif;  background-color:white; font-size:12px; line-height:1.5; ">
+                                    <br />Onec consequat sapien amet leo cur sus rhoncus. Nullam dui mi Donec at nunc
+                                    enim. Proin at iaculis tellus...</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <div id="footerDiv"></div>
+</body>
+
+</html>

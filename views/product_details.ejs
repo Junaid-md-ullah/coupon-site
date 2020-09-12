@@ -1,0 +1,188 @@
+﻿<html>
+
+<head>
+    <!-- <embed type="text/html" src="header.html"> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#headerDiv").load("header.html");
+            $("#footerDiv").load("footer.html");
+        });
+    </script>
+
+
+
+    <script type="text/javascript">
+        function myFunction(model) {
+            var mdl = model;
+
+            window.location.href = "product_details.html?model=" + mdl;
+        }
+    </script>
+</head>
+
+
+<body>
+    <div id="headerDiv"></div>
+
+
+
+
+    <div id="container">
+
+        <div class="v-bg-stylish v-portfolio-single-heading">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="portfolio-title">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <h2 name="translate" caption="pdercription" class="portfolio-caption">Product
+                                        Description</h2>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="v-page-wrap" style="background-color:white">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+
+                        <article class="portfolio-article">
+
+                            <div class="v-portfolio-item-content">
+                                <% product_detail.forEach(function(user){ %>
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <figure class="media-wrap">
+                                            <img src="<%=user.image%>" />
+                                        </figure>
+                                    </div>
+
+                                    <div class="col-sm-4" style="margin-top:5%">
+                                        <section class="article-body-wrap">
+
+                                            <section class="portfolio-detail-description">
+                                                <div class="body-text clearfix">
+                                                    <div class="v-heading-v3" style="color:black; font-family: Calibri">
+                                                        <h2><span><%=user.model%> </span> <span name="translate"
+                                                                caption="pdercription">Product Description</span></h2>
+                                                        <div class="horizontal-break"></div>
+                                                    </div>
+
+                                                    <p name="translate"
+                                                        style="color:black ; font-size:15px; font-family: Calibri">
+                                                        <%=user.detail%>
+                                                    </p><br />
+                                                    <p name="translate"
+                                                        style="color:black ; font-size:15px; font-family: Calibri">
+                                                        <%=user.detail%>
+                                                    </p><br />
+                                                    <p name="translate"
+                                                        style="color:black ; font-size:15px; font-family: Calibri">
+                                                        <%=user.detail%>
+                                                    </p><br />
+                                                    <!-- <p name="translate" caption="pdescription4" style="color:black ; font-size:15px; font-family: Calibri">
+                                                    @*@Html.Raw(Model.Description)*@
+                                                </p><br />
+                                                <p name="translate" caption="pdescription5" style="color:black ;font-size:15px; font-family: Calibri">
+                                                    @*@Html.Raw(Model.Description)*@
+                                                </p><br /> -->
+                                                    <p>
+                                                        <b style="color:black; font-family: Calibri ">Price :
+                                                            <%=user.price%> টাকা /=</b>
+                                                    </p>
+                                                </div>
+                                            </section>
+
+                                            <div class="portfolio-v-blog-item-info">
+                                                <ul class="portfolio-categories">
+
+                                                </ul>
+                                            </div>
+                                        </section>
+
+
+                                        <div class="portfolio-options-bar">
+
+                                            <div class="share-links clearfix">
+                                                <ul class="bar-styling">
+
+                                                    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a>
+                                                    </li>
+                                                    <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a>
+                                                    </li>
+                                                    <li class="google-plus"><a href="#"><i
+                                                                class="fa fa-google-plus"></i></a></li>
+                                                    <li class="mail"><a href="#"><i class="fa fa-envelope-o"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <% })%>
+                            </div>
+
+                            <div class="related-projects clearfix">
+
+
+                                <div class="row center">
+
+                                    <div class="col-sm-12">
+                                        <div class="carousel-wrap no-padding">
+
+                                            <div class="owl-carousel"
+                                                data-plugin-options='{"items": 4, "singleItem": false, "pagination": true}'>
+                                                @foreach (var items in relatedProducts)
+                                                {
+                                                <div class="item">
+                                                    <figure class="animated-overlay overlay-alt">
+                                                        <img src="@items.ImageUrl" />
+
+                                                        <a href="@Url.Action(" Detail", "Product" ,new
+                                                            RouteValueDictionary(new { id=items.Id }))"
+                                                            class="link-to-post"></a>
+                                                        <figcaption>
+                                                            <div class="thumb-info thumb-info-v2"><i
+                                                                    class="fa fa-angle-right"></i></div>
+                                                        </figcaption>
+                                                    </figure>
+                                                    <div class="v-portfolio-item-info">
+                                                        <h3 class="v-portfolio-item-title">
+                                                            <a href="#" class="link-to-post">@items.Model</a>
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                                }
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Footer-Wrap-->
+
+        <!--End Footer-Wrap-->
+    </div>
+
+    <div id="footerDiv"></div>
+</body>
+
+</html>
