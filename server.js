@@ -47,6 +47,7 @@ app.options("*", cors());
 admin_controller.init(app);
 //info_controller.init(app);
 banner_controller.init(app);
+
 // var url = "mongodb://127.0.0.1:27017/";
 const password = "qsJ322HFC2uHXu3I";
 
@@ -352,6 +353,6 @@ function number(auth) {
   );
 }
 
-var port = 8081; // you can use any port
+var port = process.env.PORT || 8081; // you can use any port
 app.listen(port);
 console.log("server on" + port);
