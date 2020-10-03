@@ -63,6 +63,30 @@
         cursor: pointer;
         font-size: 20px;
       }
+      .allShop__card .row {
+        height: 200px;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+      }
+
+      .single__shop {
+        border: 1px solid gainsboro;
+        height: 112px;
+        display: inline-block;
+        float: none;
+      }
+      .single__shop:hover {
+        box-shadow: -1px -1px 10px 5px rgba(0, 0, 0, 0.2);
+      }
+      .single__shop a:hover {
+        text-decoration: none;
+      }
+
+      .single__shop__details {
+        border-left: 1px solid gainsboro;
+        width: 150px;
+        color: black;
+      }
 
       .modal1 {
         position: fixed;
@@ -200,16 +224,36 @@
         </ul>
 
         <!-- searchbar start -->
-        <div class="search">
-          <input
-            type="text"
-            class="searchTerm"
-            placeholder="What are you looking for?"
-            style="text-align: center"
-          />
-          <button type="submit" class="searchButton">
-            <i class="fa fa-search"></i>
-          </button>
+        <div class="search justify-content-center align-items-center">
+          <form action="/allResult" class="d-flex w-100">
+            <input
+              type="text"
+              class="searchTerm"
+              name="search"
+              id="search"
+              placeholder="What are you looking for?"
+              autocomplete="off"
+              style="text-align: center"
+            />
+            <button
+              type="submit"
+              class="searchButton"
+              id="searchButtonId"
+              disabled
+            >
+              <i class="fa fa-search"></i>
+            </button>
+          </form>
+          <div
+            id="match-list"
+            class="w-100"
+            style="
+              position: absolute;
+              z-index: 1;
+              top: 40px;
+              background-color: #9dbfaf;
+            "
+          ></div>
         </div>
         <!-- Searchbar End -->
       </div>
@@ -217,10 +261,7 @@
     <!-- navbar end-->
 
     <!-- main body start -->
-    <div class="container pt-5 mb-5">
-      <h4 class="w-100" style="text-align: center; font-weight: bold">
-        Save More On Your Online Shopping With Rezeem
-      </h4>
+    <div class="container pt-2 mb-5">
       <!-- slider -->
       <div class="row mt-5">
         <div class="col-md-12">
@@ -284,10 +325,10 @@
       <!-- Select Coupon start -->
       <div class="row mt-5">
         <div class="col-md-12">
-          <div class="card border-0">
-            <div class="card-body">
-              <div class="row" style="text-align: center">
-                <div class="col-md-4 p-2 float-left">
+          <div class="row" style="text-align: center">
+            <div class="col-md-4 p-2">
+              <div class="card border-0">
+                <div class="card-body">
                   <div>
                     <img
                       class="w-75"
@@ -303,8 +344,11 @@
                     >
                   </div>
                 </div>
-
-                <div class="col-md-4 p-2 float-none">
+              </div>
+            </div>
+            <div class="col-md-4 p-2">
+              <div class="card border-0">
+                <div class="card-body">
                   <div>
                     <img
                       class="w-75"
@@ -320,11 +364,16 @@
                     >
                   </div>
                 </div>
+              </div>
+            </div>
 
-                <div class="col-md-4 mt-3 p-2 float-right">
+            <div class="col-md-4 p-2">
+              <div class="card border-0">
+                <div class="card-body">
                   <div>
                     <img
-                      class="w-75"
+                      class=""
+                      style="width: 75%; height: 182px"
                       src="./images/undraw_successful_purchase_uyin.svg"
                     />
                   </div>
@@ -346,7 +395,7 @@
       <!-- Select Coupon end -->
 
       <!-- Always Best With CouponSite start -->
-      <div class="row mt-5">
+      <!-- <div class="row mt-5">
         <div class="col-md-12">
           <div class="card border-0">
             <div class="card-body">
@@ -374,17 +423,17 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- Always Best With CouponSite End -->
 
       <!-- Most Popular Stores start -->
-      <div class="row mt-5">
+      <div class="row most__popular__store mt-5">
         <h4 class="w-100 mb-5" style="text-align: center; font-weight: bold">
           Most Popular Stores
         </h4>
         <div class="col-md-12">
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3 feature__store">
               <!-- <% shops.slice(0,1).map(function(shop){ %> -->
               <% let a = Math.floor(Math.random()*shops.length) %>
               <a href="/singleShop/<%= shops[a]._id %>">
@@ -393,7 +442,7 @@
                     <div style="text-align: center; font-weight: bold">
                       <p>Featured Store of the Month</p>
                       <img
-                        style="width: 250px; height: 120px"
+                        style="width: 200px; height: 120px"
                         src="<%= shops[a].image %>"
                       />
                     </div>
@@ -403,17 +452,39 @@
               <!-- <%} ) %> -->
             </div>
 
-            <div class="col-md-8">
-              <div class="row">
-                <% shops.slice(0,8).map(function(shop){ %>
-                <div class="col-md-3 col-sm-6 p-1">
+            <div class="col-md-9 allShop__card bg-light d-flex">
+              <div class="row d-flex justify-content-start align-items-center">
+                <% shops.slice(0,9).map(function(shop){ %>
+                <div class="col-md-4 single__shop col-sm-6 mx-1 mb-2">
                   <a href="/singleShop/<%= shop._id%>">
-                    <div class="m-2">
-                      <img
-                        class=""
-                        style="width: 150px; height: 70px"
-                        src="<%= shop.image %>"
-                      />
+                    <div
+                      class="d-flex justify-content-around align-items-center"
+                    >
+                      <div class="single__shop__logo d-flex mx-2">
+                        <img
+                          class=""
+                          style="width: 80px; height: 70px"
+                          src="<%= shop.image %>"
+                        />
+                      </div>
+                      <div class="single__shop__details p-2">
+                        <div><%= shop.name %></div>
+                        <div>
+                          <span class="text-success"
+                            ><small
+                              ><%= shop.coupon[0].couponDetails%></small
+                            ></span
+                          >
+                        </div>
+                        <br />
+                        <div class="text-secondary">
+                          <span>
+                            <small
+                              ><%= shop.coupon.length %> offers</small
+                            ></span
+                          >
+                        </div>
+                      </div>
                     </div>
                   </a>
                 </div>
@@ -496,7 +567,7 @@
         <h4 class="w-100 mb-4" style="text-align: center; font-weight: bold">
           Today's Best Coupons
         </h4>
-        <% shops.slice(3,9).map(function(shop){ %>
+        <% shops.slice(3,9).forEach(function(shop){ %>
         <div class="col-md-4 mt-3">
           <div class="card border-0">
             <div class="card-body">
@@ -508,7 +579,7 @@
                       <%= shop.coupon[0].couponDetails %>
                       <input
                         type="hidden"
-                        value="<%= shop.coupon[0].couponDetails %>"
+                        value="<%= shop.coupon[0].coupon %>"
                         id="couponValue"
                       />
                     </p>
@@ -549,7 +620,7 @@
 
       <!-- Today's Best Coupons end -->
       <!-- About CouponSite strat-->
-      <div class="row mt-5">
+      <!-- <div class="row mt-5">
         <div class="col-md-12">
           <div class="card" style="border-left: 7px solid #00b4cc">
             <div class="card-body">
@@ -575,7 +646,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- About CouponSite End-->
 
       <!-- Get In Touch start-->
@@ -610,6 +681,52 @@
       class="page-footer font-small unique-color-dark"
       style="background-color: #ffffff"
     >
+      <!-- newsletter start-->
+      <div class="container">
+        <!-- Grid row-->
+        <div class="row py-4 d-flex align-items-center">
+          <!-- Grid column -->
+          <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+            <!-- <h6 class="mb-0">Get connected with us on social networks!</h6> -->
+            <h5 class="mb-0">Newsletter</h5>
+            <p class="mt-2">
+              <small
+                >Sign up for our Newsletter and get best money saving
+                coupons</small
+              >
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-6 col-lg-7 text-center text-md-right">
+            <form action="/save_subscribers" method="post">
+              <input
+                class="p-1"
+                type="text"
+                name="email"
+                placeholder="Enter Your Email"
+              />
+              <button
+                type="submit"
+                class="btn btn-info"
+                style="
+                  height: 36px;
+                  line-height: normal;
+                  margin-left: -4.5px;
+                  margin-bottom: 1px;
+                  border-radius: 0;
+                "
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row-->
+      </div>
+      <hr />
       <div>
         <div class="container">
           <!-- Grid row-->
@@ -839,6 +956,7 @@
         modal.classList.add("active");
         overlay.classList.add("active");
         var couponValue = document.getElementById("couponValue").value;
+        console.log(couponValue);
         document.getElementById("couponData").innerText = couponValue;
       }
 
@@ -847,6 +965,57 @@
         modal.classList.remove("active");
         overlay.classList.remove("active");
       }
+    </script>
+
+    <script type="text/javascript">
+      const search = document.getElementById("search");
+      const matchList = document.getElementById("match-list");
+
+      const searchStates = async (searchText) => {
+        const res = await fetch("http://localhost:8081/allStoresNew");
+        const states = await res.json();
+        console.log(searchText);
+        let matches = states.filter((state) => {
+          const regex = new RegExp(`${searchText}`, "gi");
+          console.log(regex);
+          return state.name && state.name.match(regex);
+        });
+
+        if (searchText.length === 0) {
+          matches = [];
+          matchList.style.display = "block";
+        }
+
+        outputHtml(matches);
+      };
+      //Show results in HTML
+
+      const outputHtml = (matches) => {
+        if (matches.length > 0) {
+          document.getElementById("searchButtonId").disabled = false;
+          const html = matches
+            .map(
+              (match) => `
+              <a href="/singleShop/${match._id}">
+            <div class="p-2 d-flex" style="border-bottom:1px solid black; height:45px">
+              
+                <img class="mr-2" style="width:40px; height:30px" src="${match.image}"/>
+              <h4 style="font-size:15px; color:black">${match.name}</h4>
+              
+                
+            </div>
+          </a>
+          `
+            )
+            .join("");
+          matchList.innerHTML = html;
+        } else if (matches.length == 0) {
+          matchList.innerHTML = `<div class="p-2"><h4>nothing to show</h4></div>`;
+          document.getElementById("searchButtonId").disabled = true;
+        }
+      };
+
+      search.addEventListener("input", () => searchStates(search.value));
     </script>
   </body>
 </html>

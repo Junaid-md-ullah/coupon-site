@@ -169,6 +169,28 @@ app.get("/allStores", function (req, res) {
   });
 });
 
+// check autocomplete api
+app.get("/allStoresNew", function (req, res) {
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    console.log(err);
+    var dbo = db.db("coupon");
+
+    dbo
+      .collection("shop")
+
+      .find()
+      .toArray(function (err, documents) {
+        if (err) {
+          console.log(err);
+        } else {
+          res.send(documents);
+        }
+      });
+  });
+});
+//end autocomplete api
+
 app.get("/exclusiveCoupon", function (req, res) {
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
@@ -244,6 +266,124 @@ app.get("/AllCategories", function (req, res) {
       });
   });
 });
+
+app.get("/allResult", function (req, res, next) {
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    console.log(err);
+    var dbo = db.db("coupon");
+    var searchItem = req.query.search;
+    dbo
+      .collection("shop")
+      .find({
+        // name: { $regex: searchItem, $option: "$i" },
+        // name: searchItem,
+        // $string: { $search: req.body.search },
+        name: { $regex: new RegExp(searchItem, "gi") },
+      })
+      .toArray(function (err, result) {
+        res.render("allResult", {
+          shops: result,
+        });
+        console.log(result);
+      });
+  });
+});
+
+app.post("/save_subscribers", function (req, res) {
+  var email = req.body.email;
+
+  MongoClient.connect(url, function (err, client) {
+    var dbo = client.db("coupon");
+
+    dbo.collection("subscribers", function (err, collection) {
+      collection.insertOne({
+        email: email,
+      });
+    });
+  });
+
+  return res.redirect("back");
+});
+
+app.get("/admin/subscribersList", function (req, res, next) {
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("coupon");
+
+    dbo
+      .collection("subscribers")
+      .find()
+      .toArray(function (err, result) {
+        res.render("subscribersList", {
+          subscribers: result,
+        });
+      });
+  });
+});
+
+// app.get("/admin/addCoupon", function (req, res) {
+//   MongoClient.connect(url, function (err, db) {
+//     if (err) throw err;
+//     console.log(err);
+//     var dbo = db.db("coupon");
+
+//     dbo
+//       .collection("shop")
+//       .find()
+//       .toArray(function (err, result) {
+//         res.render("addCoupon", {
+//           shops: result,
+//         });
+//       });
+//   });
+// });
+
+var collectionShop = [];
+var collectionCategories = [];
+app.get("/admin/addCoupon", function (req, res) {
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    console.log(err);
+    var dbo = db.db("coupon");
+
+    dbo
+      .collection("shop")
+      .find()
+      .toArray(function (err, result) {
+        if (err) {
+          throw err;
+        } else {
+          for (let i = 0; i < result.length; i++) {
+            collectionShop[i] = result[i];
+          }
+          // res.render("addCoupon", {
+          //   categories: result,
+          // });
+        }
+      });
+    dbo
+      .collection("categories")
+      .find()
+      .toArray(function (err, result) {
+        if (err) {
+          throw err;
+        } else {
+          for (let i = 0; i < result.length; i++) {
+            collectionCategories[i] = result[i];
+          }
+          // res.render("addCoupon", {
+          //   categories: result,
+          // });
+        }
+      });
+    res.render("addCoupon", {
+      shops: collectionShop,
+      categories: collectionCategories,
+    });
+  });
+});
+
 //test junaid end
 
 app.get("/category", function (req, res, next) {

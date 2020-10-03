@@ -263,7 +263,7 @@
         res.redirect("/admin/login.html");
       }
     });
-
+    //junaid api
     app.post("/save_shop", upload.single("file"), function (req, res) {
       if (req.session.user) {
         if (req.file != null) {
@@ -273,9 +273,14 @@
         let shopArray = [];
 
         let shopObject = {};
-        if (req.body.coupon1 != null && req.body.couponDetails) {
+        if (
+          req.body.coupon1 != null &&
+          req.body.couponDetails &&
+          req.body.moreDetails
+        ) {
           shopObject.coupon = req.body.coupon1;
           shopObject.couponDetails = req.body.couponDetails;
+          shopObject.moreDetails = req.body.moreDetails;
           shopArray.push(shopObject);
         }
 
@@ -328,6 +333,66 @@
         res.redirect("/admin/login.html");
       }
     });
+    //test save coupon
+
+    app.post("/save_coupon", function (req, res) {
+      if (req.session.user) {
+        var shop_id;
+        var category_id;
+        var coupon_code;
+        var description;
+        var validity;
+        if (
+          req.body.shop ||
+          req.body.categories ||
+          req.body.coupon_code ||
+          req.body.description ||
+          req.body.validity
+        ) {
+          shop_id = req.body.shop;
+          category_id = req.body.categories;
+          coupon_code = req.body.coupon_code;
+          console.log(coupon_code);
+          description = req.body.description;
+          validity = req.body.validity;
+        }
+
+        // var coupon1 = req.body.coupon1;
+        // var couponDetails = req.body.couponDetails;
+
+        MongoClient.connect(url, function (err, client) {
+          var dbo = client.db("coupon");
+          dbo.collection("shop", function (err, collection) {
+            collection.update(
+              { _id: ObjectId(shop_id) },
+              {
+                $push: {
+                  coupon: {
+                    coupon: coupon_code,
+                    couponDetails: description,
+                    category: ObjectId(category_id),
+                    validity: validity,
+                  },
+                },
+              }
+
+              // coupon: [
+              //   { coupon: coupon1, couponDetails: couponDetails },
+              //   { coupon: coupon2, couponDetails: couponDetails2 },
+              // // ],
+              // coupon: shopArray,
+              // image: path,
+            );
+          });
+        });
+
+        return res.redirect("/admin/shop");
+      } else {
+        res.redirect("/admin/login.html");
+      }
+    });
+
+    //junaid end
 
     app.get("/admin/shop", function (req, res) {
       if (req.session.user) {
