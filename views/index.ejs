@@ -208,15 +208,10 @@
               Catagories
             </a>
             <div
+              id="dropdownCategory"
               class="dropdown-menu border-0"
               aria-labelledby="navbarDropdownMenuLink"
-            >
-              <a class="dropdown-item" href="#">Link 1</a>
-              <a class="dropdown-item" href="#">Link 2</a>
-              <a class="dropdown-item" href="#">Link 3</a>
-              <a class="dropdown-item" href="#">Link 4</a>
-              <a class="dropdown-item" href="#">Link 5</a>
-            </div>
+            ></div>
           </li>
           <li class="nav-item" id="loginid">
             <a class="nav-link" href="/exclusiveCoupon">Exclusive Coupon</a>
@@ -1016,6 +1011,22 @@
       };
 
       search.addEventListener("input", () => searchStates(search.value));
+    </script>
+
+    <script>
+      const dropdownId = document.getElementById("dropdownCategory");
+      const categoriesList = async () => {
+        const res = await fetch("http://localhost:8081/categoriesIndex");
+        const categories = await res.json();
+        const dropdowns = categories
+          .map(
+            (category) =>
+              `<a class="dropdown-item" href="/singleCategory/${category._id}">${category.name}</a>`
+          )
+          .join("");
+        dropdownId.innerHTML = dropdowns;
+      };
+      categoriesList();
     </script>
   </body>
 </html>

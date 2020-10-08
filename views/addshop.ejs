@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Coupon Site</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script>
+		$(function () {
+			$("#headerDiv").load("head.html");
+			$("#sideDiv").load("sidebar.html");
+			$("#footerDiv").load("foot.html");
+		});
+	</script>
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+	<div id="headerDiv"></div>
+	<div id="sideDiv"></div>
+	<div class="content-wrapper" style="height: auto; min-height: 100%;">
+		<!--<section class="content-header">-->
+		<!--<h1>Add Category</h1>-->
+		<!--<ol class="breadcrumb">-->
+		<!--<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>-->
+		<!--<li class="active">Category</li>-->
+		<!--</ol>-->
+		<!--</section>-->
+		<section class="content">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="box box-primary">
+						<div class="box-header with-border">
+							<h3 class="box-title">Add Shop</h3>
+						</div>
+						<form action="/save_shop" enctype="multipart/form-data" method="post">
+							<div class="box-body">
+
+								<div class="form-group">
+									<label>Name &nbsp;<span style="color:red;">*&nbsp;&nbsp;&nbsp;&nbsp;
+											&nbsp;&nbsp;&nbsp;&nbsp; </span></label>
+									<input type="text" name="name" id="name" class="form-control" />
+									<br>
+									<br>
+									<label>Shop logo&nbsp;&nbsp;<span style="color:red;">*</span></label>
+                                    <input id="file" type="file" name="file" required="required" />
+                                    <br>
+                                    <br>
+                                    <label for="category">Choose Category</label>
+                                        <select name="category" id="category">
+                                            <option selected="selected" disabled>Select Category</option>
+                                            <% categories.forEach(function (category){ %>
+                                                <option value="<%=category._id%>"><%= category.name %></option>
+                                            <%}) %>
+                                        </select>
+									<br>
+									<!-- <label for="coupon1">Coupon</label>
+									<input type="text" name="coupon1" id="coupon1" class="form-control" />
+									<label for="couponDetails">Coupon Details</label>
+									<input type="text" name="couponDetails" id="couponDetails" class="form-control">
+									<label for="moreDetails">More Details</label>
+									<input type="text" name="moreDetails" id="moreDetails" class="form-control"> -->
+									<br><br>
+									<!-- <label for="coupon2">Coupon2</label>
+									<input type="text" name="coupon2" id="coupon2" class="form-control" />
+									<label for="couponDetails2">Coupon2 Details</label>
+									<input type="text" name="couponDetails2" id="couponDetails2" class="form-control">
+									<br><br>
+									<label for="coupon3">Coupon3</label>
+									<input type="text" name="coupon3" id="coupon3" class="form-control" />
+									<label for="couponDetails3">Coupon Details3</label>
+									<input type="text" name="couponDetails3" id="couponDetails3" class="form-control">
+									<br><br>
+									<label for="coupon4">Coupon4</label>
+									<input type="text" name="coupon4" id="coupon4" class="form-control" />
+									<label for="couponDetails4">Coupon Details4</label>
+									<input type="text" name="couponDetails4" id="couponDetails4" class="form-control">
+									<br><br>
+									<label for="coupon5">Coupon5</label>
+									<input type="text" name="coupon5" id="coupon5" class="form-control" />
+									<label for="couponDetails5">Coupon Details5</label>
+									<input type="text" name="couponDetails5" id="couponDetails5" class="form-control"> -->
+									<br><br>
+									<!-- <div id="newElementId"></div> -->
+									<!-- <div id="dynamicCheck">
+										<input type="button" value="Click to add more coupon" onclick="createNewElement()"/>
+									 </div> -->
+								</div>
+								</br>
+
+
+								<div class="box-footer">
+									<button type="submit" class="btn btn-add btn-primary"><i
+											class="fa fa-check-circle"></i> Save
+
+									</button>
+									</br>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<div id="footerDiv"></div>
+
+
+<!-- 	
+<script type="text/JavaScript">
+	function createNewElement() {
+		var txtNewInputBox = document.createElement('div');
+		txtNewInputBox.innerHTML = "<div>Coupon<input type='text' name='coupon1' id='coupon1'>Coupon Details<input type='text' name='coupon1' id='coupon1'></div>";
+		document.getElementById("newElementId").appendChild(txtNewInputBox);
+	}
+</script> -->
+
+</body>
+
+</html>

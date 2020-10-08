@@ -250,6 +250,28 @@ app.get("/singleShop/:id?", function (req, res, next) {
       });
   });
 });
+//singleCategory
+app.get("/singleCategory/:id?", function (req, res, next) {
+  console.log("hit" + req.params.id);
+
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    console.log(err);
+    var dbo = db.db("coupon");
+
+    dbo
+      .collection("shop")
+      .find({
+        coupon: { $elemMatch: { category: ObjectId(req.params.id) } },
+      })
+      .toArray(function (err, result) {
+        res.render("singleCategory", {
+          shops: result,
+          couponCat: req.params.id,
+        });
+      });
+  });
+});
 app.get("/AllCategories", function (req, res) {
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
@@ -381,6 +403,41 @@ app.get("/admin/addCoupon", function (req, res) {
       shops: collectionShop,
       categories: collectionCategories,
     });
+  });
+});
+
+app.get("/admin/addshop", function (req, res, next) {
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("coupon");
+
+    dbo
+      .collection("categories")
+      .find()
+      .toArray(function (err, result) {
+        res.render("addshop", {
+          categories: result,
+        });
+      });
+  });
+});
+// categories for index dropdown
+
+app.get("/categoriesIndex", function (req, res, next) {
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("coupon");
+
+    dbo
+      .collection("categories")
+      .find()
+      .toArray(function (err, documents) {
+        if (err) {
+          console.log(err);
+        } else {
+          res.send(documents);
+        }
+      });
   });
 });
 

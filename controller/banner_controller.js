@@ -270,44 +270,45 @@
           var image = req.file.originalname;
         }
         var name = req.body.name;
+        var category = req.body.category;
         let shopArray = [];
 
-        let shopObject = {};
-        if (
-          req.body.coupon1 != null &&
-          req.body.couponDetails &&
-          req.body.moreDetails
-        ) {
-          shopObject.coupon = req.body.coupon1;
-          shopObject.couponDetails = req.body.couponDetails;
-          shopObject.moreDetails = req.body.moreDetails;
-          shopArray.push(shopObject);
-        }
+        // let shopObject = {};
+        // if (
+        //   req.body.coupon1 != null &&
+        //   req.body.couponDetails &&
+        //   req.body.moreDetails
+        // ) {
+        //   shopObject.coupon = req.body.coupon1;
+        //   shopObject.couponDetails = req.body.couponDetails;
+        //   shopObject.moreDetails = req.body.moreDetails;
+        //   shopArray.push(shopObject);
+        // }
 
-        let shopObject2 = {};
-        if (req.body.coupon2 != null && req.body.couponDetails2) {
-          shopObject2.coupon = req.body.coupon2;
-          shopObject2.couponDetails = req.body.couponDetails2;
-          shopArray.push(shopObject2);
-        }
-        let shopObject3 = {};
-        if (req.body.coupon3 != null && req.body.couponDetails3) {
-          shopObject3.coupon = req.body.coupon3;
-          shopObject3.couponDetails = req.body.couponDetails3;
-          shopArray.push(shopObject3);
-        }
-        let shopObject4 = {};
-        if (req.body.coupon4 != null && req.body.couponDetails4) {
-          shopObject4.coupon = req.body.coupon4;
-          shopObject4.couponDetails = req.body.couponDetails4;
-          shopArray.push(shopObject4);
-        }
-        let shopObject5 = {};
-        if (req.body.coupon5 != null && req.body.couponDetails5) {
-          shopObject5.coupon = req.body.coupon5;
-          shopObject5.couponDetails = req.body.couponDetails5;
-          shopArray.push(shopObject5);
-        }
+        // let shopObject2 = {};
+        // if (req.body.coupon2 != null && req.body.couponDetails2) {
+        //   shopObject2.coupon = req.body.coupon2;
+        //   shopObject2.couponDetails = req.body.couponDetails2;
+        //   shopArray.push(shopObject2);
+        // }
+        // let shopObject3 = {};
+        // if (req.body.coupon3 != null && req.body.couponDetails3) {
+        //   shopObject3.coupon = req.body.coupon3;
+        //   shopObject3.couponDetails = req.body.couponDetails3;
+        //   shopArray.push(shopObject3);
+        // }
+        // let shopObject4 = {};
+        // if (req.body.coupon4 != null && req.body.couponDetails4) {
+        //   shopObject4.coupon = req.body.coupon4;
+        //   shopObject4.couponDetails = req.body.couponDetails4;
+        //   shopArray.push(shopObject4);
+        // }
+        // let shopObject5 = {};
+        // if (req.body.coupon5 != null && req.body.couponDetails5) {
+        //   shopObject5.coupon = req.body.coupon5;
+        //   shopObject5.couponDetails = req.body.couponDetails5;
+        //   shopArray.push(shopObject5);
+        // }
 
         // var coupon1 = req.body.coupon1;
         // var couponDetails = req.body.couponDetails;
@@ -323,6 +324,7 @@
               //   { coupon: coupon2, couponDetails: couponDetails2 },
               // ],
               coupon: shopArray,
+              category: ObjectId(category),
               image: path,
             });
           });
