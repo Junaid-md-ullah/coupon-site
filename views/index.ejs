@@ -64,16 +64,16 @@
         font-size: 20px;
       }
       .allShop__card .row {
-        height: 200px;
+        height: 330px;
         overflow-x: auto;
-        flex-wrap: nowrap;
+        /* flex-wrap: nowrap; */
       }
 
       .single__shop {
         border: 1px solid gainsboro;
-        height: 112px;
+        height: 100px;
+        width: 262px;
         display: inline-block;
-        float: none;
       }
       .single__shop:hover {
         box-shadow: -1px -1px 10px 5px rgba(0, 0, 0, 0.2);
@@ -85,6 +85,7 @@
       .single__shop__details {
         border-left: 1px solid gainsboro;
         width: 150px;
+        height: 100px;
         color: black;
       }
 
@@ -449,16 +450,18 @@
 
             <div class="col-md-9 allShop__card bg-light d-flex">
               <div class="row d-flex justify-content-start align-items-center">
-                <% shops.slice(0,9).map(function(shop){ %>
-                <div class="col-md-4 single__shop col-sm-6 mx-1 mb-2">
+                <% shops.map(function(shop){ %>
+                <div class="single__shop mx-1 mb-2">
                   <a href="/singleShop/<%= shop._id%>">
                     <div
                       class="d-flex justify-content-around align-items-center"
                     >
-                      <div class="single__shop__logo d-flex mx-2">
+                      <div
+                        class="single__shop__logo d-flex mx-2 justify-content-center align-items-center"
+                      >
                         <img
                           class=""
-                          style="width: 80px; height: 70px"
+                          style="width: 80px; height: 50px"
                           src="<%= shop.image %>"
                         />
                       </div>
@@ -471,7 +474,6 @@
                             ></span
                           >
                         </div>
-                        <br />
                         <div class="text-secondary">
                           <span>
                             <small

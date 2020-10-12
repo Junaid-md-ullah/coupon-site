@@ -204,8 +204,8 @@ app.get("/exclusiveCoupon", function (req, res) {
         res.render("exclusiveCoupon", {
           shops: result,
         });
-        console.log(result[0].coupon[0].couponDetails);
-        console.log(result);
+        // console.log(result[0].coupon[0].couponDetails);
+        // console.log(result);
       });
   });
 });
@@ -252,8 +252,6 @@ app.get("/singleShop/:id?", function (req, res, next) {
 });
 //singleCategory
 app.get("/singleCategory/:id?", function (req, res, next) {
-  console.log("hit" + req.params.id);
-
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
     console.log(err);
@@ -267,7 +265,7 @@ app.get("/singleCategory/:id?", function (req, res, next) {
       .toArray(function (err, result) {
         res.render("singleCategory", {
           shops: result,
-          couponCat: req.params.id,
+          couponCategory: req.params.id,
         });
       });
   });
@@ -279,7 +277,7 @@ app.get("/AllCategories", function (req, res) {
     var dbo = db.db("coupon");
 
     dbo
-      .collection("coupons")
+      .collection("shop")
       .find()
       .toArray(function (err, result) {
         res.render("AllCategories", {
@@ -441,6 +439,22 @@ app.get("/categoriesIndex", function (req, res, next) {
   });
 });
 
+//all coupons for admin panel
+app.get("/admin/allCoupons", function (req, res, next) {
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("coupon");
+
+    dbo
+      .collection("shop")
+      .find()
+      .toArray(function (err, result) {
+        res.render("allCoupons", {
+          shops: result,
+        });
+      });
+  });
+});
 //test junaid end
 
 app.get("/category", function (req, res, next) {

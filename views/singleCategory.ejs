@@ -178,7 +178,7 @@
     <div class="container">
       <div class="row mt-4">
         <% shops.map(function(shop){ %> <% var selectedCategory =
-        shop.coupon.filter((coupon) =>coupon.category == couponCat[0]) %> <%
+        shop.coupon.filter((coupon) =>coupon.category == couponCategory) %> <%
         selectedCategory.map(function(selectedCoupon){ %>
         <div class="col-md-4 mt-3">
           <div class="card border-0">

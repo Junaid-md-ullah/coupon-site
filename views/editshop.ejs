@@ -38,8 +38,12 @@
 									<input type="hidden" name="id" value="<%= user._id %>" />
 									<input type="text" name="name" id="name" class="form-control"
 										value="<%= user.name %>"  />
-									<input type="text" name="coupon" id="coupon" class="form-control" value="<%= user.coupon[0].coupon %>">
-									<input type="text" name="couponDetails" id="couponDetails" class="form-control" value="<%= user.coupon[0].couponDetails %>">
+									<!-- <input type="text" name="coupon" id="coupon" class="form-control" value="<%= user.coupon[0].coupon %>">
+									<select name="set_exclusive" id="select_exclusive">
+										<option value="yes" selected="<% user.exclusive == "yes" %>">yes</option>
+										<option value="no" selected="<% user.exclusive == "no" %>">no</option>
+									</select>
+									<input type="text" name="couponDetails" id="couponDetails" class="form-control" value="<%= user.coupon[0].couponDetails %>"> -->
 								</div>
 							</br>
 

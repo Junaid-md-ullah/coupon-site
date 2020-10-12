@@ -341,20 +341,25 @@
       if (req.session.user) {
         var shop_id;
         var category_id;
+        var coupon_link;
         var coupon_code;
+        var set_exclusive;
         var description;
         var validity;
         if (
           req.body.shop ||
+          req.body.coupon_link ||
           req.body.categories ||
           req.body.coupon_code ||
+          req.body.set_exclusive ||
           req.body.description ||
           req.body.validity
         ) {
           shop_id = req.body.shop;
+          coupon_link = req.body.coupon_link;
           category_id = req.body.categories;
           coupon_code = req.body.coupon_code;
-          console.log(coupon_code);
+          set_exclusive = req.body.set_exclusive;
           description = req.body.description;
           validity = req.body.validity;
         }
@@ -370,8 +375,11 @@
               {
                 $push: {
                   coupon: {
+                    couponId: new ObjectId(),
                     coupon: coupon_code,
+                    coupon_link: coupon_link,
                     couponDetails: description,
+                    exclusive: set_exclusive,
                     category: ObjectId(category_id),
                     validity: validity,
                   },
@@ -443,12 +451,80 @@
         res.redirect("/admin/login.html");
       }
     });
+    //coupon edit
+
+    app.get("/admin/edit_coupon/:id?", (req, res, next) => {
+      if (req.session.user) {
+        console.log("Hit" + req.query.id);
+
+        var o_id = new ObjectId(req.query.id);
+        // var query = {
+        //   _id: o_id,
+        // };
+        // console.log(query);
+        MongoClient.connect(url, function (err, db) {
+          var dbo = db.db("coupon");
+
+          dbo
+            .collection("shop")
+            .find({
+              coupon: { $elemMatch: { couponId: o_id } },
+            })
+            .toArray(function (err, result) {
+              if (err) throw err;
+              res.render("editcoupon", {
+                shops: result,
+                coupon_Id: req.query.id,
+              });
+            });
+        });
+      } else {
+        res.redirect("/admin/login.html");
+      }
+    });
+
+    //edit the details of coupon
+
+    app.post("/edit_coupon", function (req, res) {
+      if (req.session.user) {
+        var o_id = req.body.id;
+        // console.log(req.body.coupon);
+        // console.log(req.body.couponDetails);
+
+        MongoClient.connect(url, function (err, client) {
+          var dbo = client.db("coupon");
+
+          dbo.collection("shop").updateOne(
+            {
+              coupon: { $elemMatch: { couponId: o_id } },
+            },
+            {
+              $set: {
+                coupon: [
+                  {
+                    coupon: req.body.coupon,
+                    couponDetails: req.body.couponDetails,
+                    exclusive: req.body.set_exclusive,
+                  },
+                ],
+              },
+            }
+          );
+        });
+
+        return res.redirect("/admin/shop");
+      } else {
+        res.redirect("/admin/login.html");
+      }
+    });
+
+    //coupon edit end
 
     app.post("/edit_shop", function (req, res) {
       if (req.session.user) {
         var o_id = new ObjectId(req.body.id);
-        console.log(req.body.coupon);
-        console.log(req.body.couponDetails);
+        // console.log(req.body.coupon);
+        // console.log(req.body.couponDetails);
 
         MongoClient.connect(url, function (err, client) {
           var dbo = client.db("coupon");
@@ -460,12 +536,13 @@
             {
               $set: {
                 name: req.body.name,
-                coupon: [
-                  {
-                    coupon: req.body.coupon,
-                    couponDetails: req.body.couponDetails,
-                  },
-                ],
+                // coupon: [
+                //   {
+                //     coupon: req.body.coupon,
+                //     couponDetails: req.body.couponDetails,
+                //   },
+                // ],
+                // exclusive: req.body.set_exclusive,
               },
             }
           );

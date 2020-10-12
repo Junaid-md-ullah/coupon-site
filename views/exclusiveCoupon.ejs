@@ -229,7 +229,9 @@
       </div>
 
       <div class="row mt-4">
-        <% shops.map(function(shop){ %>
+        <% shops.map(function(shop){ %> <% var exclusiveCoupons =
+        shop.coupon.filter((coupon)=> coupon.exclusive == "yes") %> <%
+        exclusiveCoupons.map(function(exclusiveCoupon){%>
         <div class="col-md-4 mt-3">
           <div class="card border-0">
             <div class="card-body">
@@ -238,7 +240,8 @@
                   <div class="d-flex justify-content-around">
                     <img class="w-25" src="<%= shop.image %>" />
                     <p class="font-weight-bold" style="margin: auto">
-                      <%= shop.coupon[0].couponDetails %>
+                      <!-- <%= shop.coupon[0].couponDetails %> -->
+                      <%= exclusiveCoupon.coupon %>
                     </p>
                   </div>
                 </div>
@@ -253,9 +256,11 @@
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <button type="button" class="btn btn-info btn-sm btn-block">
-                    Show Coupon
-                  </button>
+                  <a href="<%= exclusiveCoupon.coupon_link %>" target="_blank">
+                    <button type="button" class="btn btn-info btn-sm btn-block">
+                      Show Coupon
+                    </button>
+                  </a>
                 </div>
               </div>
               <div class="row mt-3">
@@ -268,7 +273,7 @@
             </div>
           </div>
         </div>
-        <%} )%>
+        <%} )%> <%} )%>
       </div>
     </div>
 

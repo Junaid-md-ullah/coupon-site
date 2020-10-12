@@ -46,6 +46,9 @@ alert(x);
                   <input type="text" name="coupon_code" id="coupon_code" />
                   <br />
                   <br />
+                  <label for="coupon_link">Add Coupon link:</label>
+                  <input type="url" name="coupon_link" id="coupon_link" />
+                  <br />
                   <label for="shop">Select Shop</label>
                   <select name="shop" id="shop">
                     <option selected="selected" disabled>Select Shop</option>
@@ -67,6 +70,12 @@ alert(x);
                     <%}) %>
                   </select>
                   <br />
+                  <br />
+                  <label for="select_exclusive">Set As</label>
+                  <select name="set_exclusive" id="select_exclusive">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select>
                   <br />
                   <label for="description">Description</label>
                   <input type="text" id="description" name="description" />
