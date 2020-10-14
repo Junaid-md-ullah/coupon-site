@@ -402,6 +402,69 @@
       }
     });
 
+    //add deals
+
+    app.post("/save_deals", function (req, res) {
+      if (req.session.user) {
+        var shop_id;
+        var category_id;
+        var coupon_link;
+        var set_exclusive;
+        var description;
+        var validity;
+        if (
+          req.body.shop ||
+          req.body.coupon_link ||
+          req.body.categories ||
+          req.body.set_exclusive ||
+          req.body.description ||
+          req.body.validity
+        ) {
+          shop_id = req.body.shop;
+          coupon_link = req.body.coupon_link;
+          category_id = req.body.categories;
+          set_exclusive = req.body.set_exclusive;
+          description = req.body.description;
+          validity = req.body.validity;
+        }
+
+        // var coupon1 = req.body.coupon1;
+        // var couponDetails = req.body.couponDetails;
+
+        MongoClient.connect(url, function (err, client) {
+          var dbo = client.db("coupon");
+          dbo.collection("shop", function (err, collection) {
+            collection.update(
+              { _id: ObjectId(shop_id) },
+              {
+                $push: {
+                  deals: {
+                    dealId: new ObjectId(),
+                    coupon_link: coupon_link,
+                    couponDetails: description,
+                    exclusive: set_exclusive,
+                    category: ObjectId(category_id),
+                    validity: validity,
+                  },
+                },
+              }
+
+              // coupon: [
+              //   { coupon: coupon1, couponDetails: couponDetails },
+              //   { coupon: coupon2, couponDetails: couponDetails2 },
+              // // ],
+              // coupon: shopArray,
+              // image: path,
+            );
+          });
+        });
+
+        return res.redirect("/admin/shop");
+      } else {
+        res.redirect("/admin/login.html");
+      }
+    });
+
     //junaid end
 
     app.get("/admin/shop", function (req, res) {

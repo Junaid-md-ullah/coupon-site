@@ -969,7 +969,7 @@
       const matchList = document.getElementById("match-list");
 
       const searchStates = async (searchText) => {
-        const res = await fetch("http://localhost:8081/allStoresNew");
+        const res = await fetch("https://couponsite2020.herokuapp.com/allStoresNew");
         const states = await res.json();
         console.log(searchText);
         let matches = states.filter((state) => {

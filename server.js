@@ -404,6 +404,51 @@ app.get("/admin/addCoupon", function (req, res) {
   });
 });
 
+//deals page route
+app.get("/admin/addDeals", function (req, res) {
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    console.log(err);
+    var dbo = db.db("coupon");
+
+    dbo
+      .collection("shop")
+      .find()
+      .toArray(function (err, result) {
+        if (err) {
+          throw err;
+        } else {
+          for (let i = 0; i < result.length; i++) {
+            collectionShop[i] = result[i];
+          }
+          // res.render("addCoupon", {
+          //   categories: result,
+          // });
+        }
+      });
+    dbo
+      .collection("categories")
+      .find()
+      .toArray(function (err, result) {
+        if (err) {
+          throw err;
+        } else {
+          for (let i = 0; i < result.length; i++) {
+            collectionCategories[i] = result[i];
+          }
+          // res.render("addCoupon", {
+          //   categories: result,
+          // });
+        }
+      });
+    res.render("addDeals", {
+      shops: collectionShop,
+      categories: collectionCategories,
+    });
+  });
+});
+// deals page route end
+
 app.get("/admin/addshop", function (req, res, next) {
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
@@ -455,6 +500,25 @@ app.get("/admin/allCoupons", function (req, res, next) {
       });
   });
 });
+
+//all Deals for admin panel
+app.get("/admin/allDeals", function (req, res, next) {
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("coupon");
+
+    dbo
+      .collection("shop")
+      .find()
+      .toArray(function (err, result) {
+        res.render("allDeals", {
+          shops: result,
+        });
+        console.log(result);
+      });
+  });
+});
+
 //test junaid end
 
 app.get("/category", function (req, res, next) {
