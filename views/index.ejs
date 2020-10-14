@@ -577,7 +577,7 @@
                       <input
                         type="hidden"
                         value="<%= shop.coupon[0].coupon %>"
-                        id="couponValue"
+                        class="couponValue"
                       />
                     </p>
                   </div>
@@ -954,7 +954,7 @@
         overlay.classList.add("active");
         var couponValue = document.getElementById("couponValue").value;
         console.log(couponValue);
-        document.getElementById("couponData").innerText = couponValue;
+        document.getElementsById("couponData").innerText = couponValue;
       }
 
       function closeModal(modal) {
