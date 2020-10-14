@@ -1018,7 +1018,7 @@
     <script>
       const dropdownId = document.getElementById("dropdownCategory");
       const categoriesList = async () => {
-        const res = await fetch("http://localhost:8081/categoriesIndex");
+        const res = await fetch("https://couponsite2020.herokuapp.com/categoriesIndex");
         const categories = await res.json();
         const dropdowns = categories
           .map(
