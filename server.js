@@ -519,6 +519,38 @@ app.get("/admin/allDeals", function (req, res, next) {
   });
 });
 
+//show coupon api
+// app.get("/show_coupon/:couponValue?", (req, res, next) => {
+//   if (req.session.user) {
+//     console.log("Hit" + req.query.id);
+
+//     var o_id = new ObjectId(req.query.id);
+//     // var query = {
+//     //   _id: o_id,
+//     // };
+//     // console.log(query);
+//     MongoClient.connect(url, function (err, db) {
+//       var dbo = db.db("coupon");
+
+//       dbo
+//         .collection("shop")
+//         .find({
+//           coupon: { $elemMatch: { couponId: o_id } },
+//         })
+//         .toArray(function (err, result) {
+//           if (err) throw err;
+//           res.render("index", {
+//             shops: result,
+//             coupon_Id: req.query.id,
+//           });
+//         });
+//     });
+//   } 
+//   // else {
+//   //   res.redirect("/");
+//   // }
+// });
+
 //test junaid end
 
 app.get("/category", function (req, res, next) {
