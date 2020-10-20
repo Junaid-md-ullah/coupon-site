@@ -98,7 +98,7 @@
         border: none;
         z-index: 10;
         background-color: white;
-        width: 500px;
+        width: 550px;
         max-width: 80%;
       }
       .modal1.active {
@@ -121,6 +121,9 @@
       }
       .modal1-body {
         padding: 10px 15px;
+      }
+      .modal1-footer{
+        background-color: #EFF1F5;
       }
       #overlay {
         position: fixed;
@@ -903,7 +906,37 @@
         <button data-close-button class="close-button">&times;</button>
       </div>
       <div class="modal1-body">
+        <div class="container">
+          <div class="col" style="text-align: center;">
+            <p>Company Discount Code: Get 70% OFF + Extra 15% OFF On Everything | Full Price Items Only</p>
+            <span>
+              <button
+              class="btn"
+              style="
+                width: 170px;
+                background-color: #d6fffe;
+                border-color: #5ef9f8;
+                border-radius: 0;
+              "
+            >
+              CS
+            </button>
+            <button style="background-color: #00F4F3; color:#fff; border: none; padding: 7px; width: 70px;">Copy</button>
+            </span>
+            
+          <p><small>Copy and Paste the Code at Company</small></p>
+          </div>
+          <div style="display: flex;; justify-content: space-between;">
+            <a href=""> < View All Company Coupons</a>
+            <a href="">Go To Company > </a>
+          </div>
+        </div>
         <p class="font-weight-bold" id="couponData" style="margin: auto"></p>
+      </div>
+      <div class="modal1-footer" style="text-align: center;">
+        <p style="white-space: nowrap; margin-bottom: 0;padding: 5px;"><small>Sign Up for our Newsletter and get best money saving Company Coupons</small></p>
+        <span style="padding: 5px;"><input style="color:gray;padding: 1px;" type="email" value="Enter Email Address"> <button style="border: 1px solid gray; border-radius:0;color:gray; background-color: #fff;padding:2px">Subscribe</button></span>
+        <p style="margin-bottom: 0;padding: 5px;"><small>We never share your Email with others</small></p>
       </div>
     </div>
     <div id="overlay"></div>
@@ -980,16 +1013,17 @@
       const searchStates = async (searchText) => {
         const res = await fetch("https://couponsite2020.herokuapp.com/allStoresNew");
         const states = await res.json();
-        console.log(searchText);
-        let matches = states.filter((state) => {
-          const regex = new RegExp(`${searchText}`, "gi");
+          let matches = states.filter((state) => {
+          const regex = new RegExp(`${searchText}`, "gi");   
           console.log(regex);
           return state.name && state.name.match(regex);
         });
+        
 
         if (searchText.length === 0) {
           matches = [];
-          matchList.style.display = "block";
+          // matchList.style.display = "block";
+          matchList.innerHTML='';
         }
 
         outputHtml(matches);
@@ -1002,7 +1036,7 @@
           const html =  matches.map(
               (match) => `
               <a href="/singleShop/${match._id}">
-            <div class="p-2 d-flex" style="border-bottom:1px solid black; height:45px">
+            <div class="p-2 d-flex" style="border-top:1px solid black; height:45px">
               
                 <img class="mr-2" style="width:40px; height:30px" src="${match.image}"/>
               <h4 style="font-size:15px; color:black">${match.name}</h4>
@@ -1032,7 +1066,7 @@
 };
 
       // search.addEventListener("input", () => searchStates(search.value));
-      search.addEventListener("input", () => debounce(searchStates(search.value), 300));
+      search.addEventListener("input", () => debounce(searchStates(search.value), 100));
     </script>
 
     <script>
