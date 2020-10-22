@@ -910,18 +910,19 @@
           <div class="col" style="text-align: center;">
             <p>Company Discount Code: Get 70% OFF + Extra 15% OFF On Everything | Full Price Items Only</p>
             <span>
-              <button
-              class="btn"
+              <input
+              type="text"
               style="
                 width: 170px;
                 background-color: #d6fffe;
                 border-color: #5ef9f8;
                 border-radius: 0;
+                border: dashed;
               "
-            >
-              CS
-            </button>
-            <button style="background-color: #00F4F3; color:#fff; border: none; padding: 7px; width: 70px;">Copy</button>
+              id="couponData"
+            />  
+            
+            <button onclick="copyCode()" style="background-color: #00F4F3; color:#fff; border: none; padding: 3px; width: 70px;">Copy</button>
             </span>
             
           <p><small>Copy and Paste the Code at Company</small></p>
@@ -931,7 +932,7 @@
             <a href="">Go To Company > </a>
           </div>
         </div>
-        <p class="font-weight-bold" id="couponData" style="margin: auto; display: block;"></p>
+        <!-- <input type="text" class="font-weight-bold" id="couponData" style="margin: auto; display: none;"/> -->
       </div>
       <div class="modal1-footer" style="text-align: center;">
         <p style="white-space: nowrap; margin-bottom: 0;padding: 5px;"><small>Sign Up for our Newsletter and get best money saving Company Coupons</small></p>
@@ -1002,7 +1003,28 @@
     </script>
     <script>
       function showModal(data){
-        document.getElementById("couponData").innerText = data;
+        // document.getElementById("couponData").innerText = data;
+        document.getElementById("couponData").value = data;
+        setTimeout(()=>{
+          window.open('https://www.facebook.com');
+        },600)
+        
+      }
+      function copyCode(){
+          /* Get the text field */
+      var copyText = document.getElementById("couponData");
+
+      /* Select the text field */
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+      /* Copy the text inside the text field */
+      document.execCommand("copy");
+
+      
+      /* Alert the copied text */
+      console.log("Copied the text: " + copyText.value);
+
       }
     </script>
 
@@ -1055,18 +1077,27 @@
           document.getElementById("searchButtonId").disabled = true;
         }
       };
-      const debounce = function (fn, delay) {
-        let timer = 0;  
-        return function () {
-        clearTimeout(timer); 
-        timer = setTimeout(() => {
-        fn();
+
+//       const debounce = function (fn, delay) {
+//         let timer = 0;  
+//         clearTimeout(timer); 
+//         timer = setTimeout(() => {
+//         fn();
+//       }, delay);
+// };
+
+
+var debounce = function (fn, delay) {
+          
+        setTimeout(() => {
+          matchList.innerHTML=`<div class="p-2"><h4>Loading...</h4></div>`;
+        
       }, delay);
-  };
+      fn();
 };
 
       // search.addEventListener("input", () => searchStates(search.value));
-      search.addEventListener("input", () => debounce(searchStates(search.value), 100));
+      search.addEventListener("input", () => debounce(searchStates(search.value), 200));
     </script>
 
     <script>
