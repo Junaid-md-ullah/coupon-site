@@ -311,19 +311,25 @@ app.get("/allResult", function (req, res, next) {
 });
 
 app.post("/save_subscribers", function (req, res) {
-  var email = req.body.email;
+  if(req.body.email){
+    var email = req.body.email;
 
-  MongoClient.connect(url, function (err, client) {
-    var dbo = client.db("coupon");
-
-    dbo.collection("subscribers", function (err, collection) {
-      collection.insertOne({
-        email: email,
+    MongoClient.connect(url, function (err, client) {
+      var dbo = client.db("coupon");
+  
+      dbo.collection("subscribers", function (err, collection) {
+        collection.insertOne({
+          email: email,
+        });
       });
     });
-  });
+  
+    return res.redirect("back");
+  }
+  else{
+    return res.redirect("back");
+  }
 
-  return res.redirect("back");
 });
 
 app.get("/admin/subscribersList", function (req, res, next) {
@@ -337,6 +343,22 @@ app.get("/admin/subscribersList", function (req, res, next) {
       .toArray(function (err, result) {
         res.render("subscribersList", {
           subscribers: result,
+        });
+      });
+  });
+});
+
+app.get("/admin/contactUsList", function (req, res, next) {
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("coupon");
+
+    dbo
+      .collection("contact_us")
+      .find()
+      .toArray(function (err, result) {
+        res.render("contactUsList", {
+          contacts: result,
         });
       });
   });
@@ -551,6 +573,31 @@ app.get("/admin/allDeals", function (req, res, next) {
 //   // }
 // });
 
+app.post("/save_contactUs", function (req, res) {
+
+    var fname = req.body.fname;
+    var lname = req.body.lname;
+    var phone = req.body.phone;
+    var query = req.body.query;
+    var queryDetails = req.body.queryDetails;
+
+
+    MongoClient.connect(url, function (err, client) {
+      var dbo = client.db("coupon");
+      dbo.collection("contact_us", function (err, collection) {
+        collection.insertOne({
+          First_Name: fname,
+          Last_Name: lname,
+          Phone_No: phone,
+          Query: query,
+          Query_Details: queryDetails
+        });
+      });
+    });
+
+     return res.redirect("back");
+  });
+
 //test junaid end
 
 app.get("/category", function (req, res, next) {
@@ -605,6 +652,8 @@ app.get("/", function (req, res, next) {
       });
   });
 });
+
+
 
 app.get("/achivement/get", function (req, res, next) {
   try {

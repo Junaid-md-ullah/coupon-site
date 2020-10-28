@@ -7,6 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     <!-- Bootstrap CSS -->
     <link
@@ -63,6 +64,12 @@
         cursor: pointer;
         font-size: 20px;
       }
+
+      .carousel-item {
+        width: 56vw !important;
+        height: 45vh !important;
+      }
+
       .allShop__card .row {
         height: 330px;
         overflow-x: auto;
@@ -140,6 +147,16 @@
         opacity: 1;
         pointer-events: all;
       }
+      .carousel-item{
+        width: 100vw;
+        height: 45vh;
+        
+      }
+      .carousel-item img{
+        object-fit: scale-down;
+        
+      }
+      
       @media only screen and (max-width: 600px) {
         #navbarSupportedContent {
           height: 100%;
@@ -263,57 +280,56 @@
     <div class="container pt-2 mb-5">
       <!-- slider -->
       <div class="row mt-5">
-        <div class="col-md-12">
-          <div
-            id="carouselExampleControls w-80 h-30"
-            class="carousel slide"
-            data-ride="carousel"
-          >
+        <div class="col-md-12 edit-carousel">
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <img
-                  class="d-block w-100"
+                  class="d-block"
                   src="https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg"
                   alt="First slide"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  class="d-block w-100"
+                  class="d-block"
                   src="https://mdbootstrap.com/img/Photos/Slides/img%20(46).jpg"
                   alt="Second slide"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  class="d-block w-100"
+                  class="d-block"
                   src="https://mdbootstrap.com/img/Photos/Slides/img%20(47).jpg"
                   alt="Third slide"
                 />
               </div>
             </div>
             <a
-              class="carousel-control-prev"
+              class="carousel-control-prev carousel-control"
               href="#carouselExampleControls"
               role="button"
               data-slide="prev"
             >
-              <span
-                class="carousel-control-prev-icon"
+              <!-- <span
+                class="fas fa-caret-left"
                 aria-hidden="true"
-              ></span>
+                style="background-color: white;"
+              ></span> -->
+              <i class="fas fa-chevron-circle-left fa-2x" style="background-color:black;box-shadow: 0 0 5px black;border-radius:50%; position:absolute !important; right: 150px;"></i>
               <span class="sr-only">Previous</span>
             </a>
             <a
-              class="carousel-control-next"
+              class="carousel-control-next carousel-control"
               href="#carouselExampleControls"
               role="button"
               data-slide="next"
             >
-              <span
+              <!-- <span
                 class="carousel-control-next-icon"
                 aria-hidden="true"
-              ></span>
+              ></span> -->
+              <i class="fas fa-chevron-circle-right fa-2x" style="background-color:black;box-shadow: 0 0 5px black;border-radius:50%;position:absolute !important; left: 150px;"></i>
               <span class="sr-only">Next</span>
             </a>
           </div>
@@ -330,7 +346,7 @@
                 <div class="card-body">
                   <div>
                     <img
-                      class="w-75"
+                      class="w-50"
                       src="./images/undraw_add_to_cart_vkjp.svg"
                     />
                   </div>
@@ -350,7 +366,7 @@
                 <div class="card-body">
                   <div>
                     <img
-                      class="w-75"
+                      class="w-50"
                       src="./images/undraw_online_shopping_ga73.svg"
                     />
                   </div>
@@ -372,7 +388,7 @@
                   <div>
                     <img
                       class=""
-                      style="width: 75%; height: 182px"
+                      style="width: 50%; height: 118px"
                       src="./images/undraw_successful_purchase_uyin.svg"
                     />
                   </div>
@@ -437,7 +453,7 @@
               <% let a = Math.floor(Math.random()*shops.length) %>
               <a href="/singleShop/<%= shops[a]._id %>">
                 <div class="card border-0">
-                  <div class="card-body">
+                  <div class="card-body"  style="height: 45vh">
                     <div style="text-align: center; font-weight: bold">
                       <p>Featured Store of the Month</p>
                       <img
@@ -451,7 +467,7 @@
               <!-- <%} ) %> -->
             </div>
 
-            <div class="col-md-9 allShop__card bg-light d-flex">
+            <!-- <div class="col-md-9 allShop__card bg-light d-flex">
               <div class="row d-flex justify-content-start align-items-center">
                 <% shops.map(function(shop){ %>
                 <div class="single__shop mx-1 mb-2">
@@ -490,6 +506,119 @@
                 </div>
                 <%} ) %>
               </div>
+            </div> -->
+
+            <!--carousel test for most popular store-->
+            <div class="col-md-9  bg-light">
+              
+                <div id="carouselExampleControls1" class="carousel slide" data-ride="carousel" data-interval="false">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <% shops.slice(0,9).map(function(shop){ %>
+                        <div class="single__shop mx-1 mb-2">
+                          <a href="/singleShop/<%= shop._id%>">
+                            <div
+                            class="d-flex justify-content-around align-items-center"
+                            >
+                            <div
+                              class="single__shop__logo d-flex mx-2 justify-content-center align-items-center"
+                            >
+                              <img
+                                class=""
+                                style="width: 80px; height: 50px"
+                                src="<%= shop.image %>"
+                              />
+                            </div>
+                          <div class="single__shop__details p-2">
+                            <div><%= shop.name %></div>
+                            <div>
+                              <span class="text-success"
+                                ><small
+                                  ><%= shop.coupon[0].couponDetails%></small
+                                ></span
+                              >
+                            </div>
+                            <div class="text-secondary">
+                              <span>
+                                <small
+                                  ><%= shop.coupon.length %> offers</small
+                                ></span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <%} ) %>
+                    
+                </div>
+                <div class="carousel-item">
+                  <% shops.slice(4,7).map(function(shop){ %>
+                    <div class="single__shop mx-1 mb-2">
+                      <a href="/singleShop/<%= shop._id%>">
+                        <div
+                          class="d-flex justify-content-around align-items-center"
+                        >
+                          <div
+                            class="single__shop__logo d-flex mx-2 justify-content-center align-items-center"
+                          >
+                            <img
+                              class=""
+                              style="width: 80px; height: 50px"
+                              src="<%= shop.image %>"
+                            />
+                          </div>
+                          <div class="single__shop__details p-2">
+                            <div><%= shop.name %></div>
+                            <div>
+                              <span class="text-success"
+                                ><small
+                                  ><%= shop.coupon[0].couponDetails%></small
+                                ></span
+                              >
+                            </div>
+                            <div class="text-secondary">
+                              <span>
+                                <small
+                                  ><%= shop.coupon.length %> offers</small
+                                ></span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <%} ) %>
+                </div>
+            </div>
+            </div>
+            <a
+            class="carousel-control-prev carousel-control"
+            href="#carouselExampleControls1"
+            role="button"
+            data-slide="prev"
+          >
+            <!-- <span
+              class="fas fa-caret-left"
+              aria-hidden="true"
+              style="background-color: white;"
+            ></span> -->
+            <i class="fas fa-chevron-circle-left fa-2x" style="background-color:black;box-shadow: 0 0 5px black;border-radius:50%; position:absolute !important; right: 120px;"></i>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a
+            class="carousel-control-next carousel-control"
+            href="#carouselExampleControls1"
+            role="button"
+            data-slide="next"
+          >
+            <!-- <span
+              class="carousel-control-next-icon"
+              aria-hidden="true"
+            ></span> -->
+            <i class="fas fa-chevron-circle-right fa-2x" style="background-color:black;box-shadow: 0 0 5px black;border-radius:50%;position:absolute !important; left: 120px;"></i>
+            <span class="sr-only">Next</span>
+          </a>
             </div>
           </div>
         </div>
@@ -567,7 +696,7 @@
         <h4 class="w-100 mb-4" style="text-align: center; font-weight: bold">
           Today's Best Coupons
         </h4>
-    
+        
         <% shops.forEach(function(shop){ %>
           <% let x = shop.coupon.map((coupon)=>coupon) %>
           <% let shuffled = x.sort(()=>Math.random() - 0.5) %>
@@ -668,9 +797,9 @@
           </div>
 
           <div style="text-align: center">
-            <button type="button" class="btn btn-info btn-lg">
+            <a type="button" class="btn btn-info btn-lg" href="contactUs.html">
               Contact Us
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -686,9 +815,9 @@
       style="background-color: #ffffff"
     >
       <!-- newsletter start-->
-      <div class="container">
+      <div class="container" style="background-color: ;">
         <!-- Grid row-->
-        <div class="row py-4 d-flex align-items-center">
+        <div class="row py-4 d-flex align-items-center justify-content-between">
           <!-- Grid column -->
           <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
             <!-- <h6 class="mb-0">Get connected with us on social networks!</h6> -->
@@ -699,16 +828,12 @@
                 coupons</small
               >
             </p>
-          </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <div class="col-md-6 col-lg-7 text-center text-md-right">
             <form action="/save_subscribers" method="post">
               <input
                 class="p-1"
                 type="text"
                 name="email"
+                id="email"
                 placeholder="Enter Your Email"
               />
               <button
@@ -721,10 +846,17 @@
                   margin-bottom: 1px;
                   border-radius: 0;
                 "
+                onclick="changeSubscribe"
               >
-                Subscribe
+                <span id="subscribe_Button">Subscribe</span>
               </button>
             </form>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-6 d-flex justify-content-end">
+            <img class="w-50" src="./images/undraw_happy_announcement_ac67.png" alt="">
           </div>
           <!-- Grid column -->
         </div>
@@ -922,7 +1054,7 @@
               id="couponData"
             />  
             
-            <button onclick="copyCode()" style="background-color: #00F4F3; color:#fff; border: none; padding: 3px; width: 70px;">Copy</button>
+            <button onclick="copyCode()" style="background-color: #00F4F3; color:#fff; border: none; padding: 3px; width: 70px;"><span id="copyChange">Copy</span></button>
             </span>
             
           <p><small>Copy and Paste the Code at Company</small></p>
@@ -1013,6 +1145,12 @@
       function copyCode(){
           /* Get the text field */
       var copyText = document.getElementById("couponData");
+      document.getElementById("copyChange").innerHTML='<i class="far fa-check-circle">'+'Copied!!'+'</i>';
+      setTimeout(()=>{
+        document.getElementById("copyChange").innerText="Copy";
+      },2000)
+      
+
 
       /* Select the text field */
       copyText.select();
@@ -1025,6 +1163,13 @@
       /* Alert the copied text */
       console.log("Copied the text: " + copyText.value);
 
+      }
+
+      function changeSubscribe(){
+        
+        var subscribe_Button = document.getElementById("subscribe_Button");
+        subscribe_Button.innerHTML='<i class="far fa-check-circle">'+'Subscribed !'+'</i>';
+        
       }
     </script>
 
@@ -1114,6 +1259,51 @@ var debounce = function (fn, delay) {
         dropdownId.innerHTML = dropdowns;
       };
       categoriesList();
+    </script>
+
+    <!-- carousel next previous button hide -->
+    <script>
+      $('#carouselExampleControls1').carousel({
+      wrap: false
+});
+        $('#carouselExampleControls1').on('slid.bs.carousel', '', function() {
+  
+
+  if($('.carousel-inner .carousel-item:first').hasClass('active')) {
+    $('.carousel-control-prev').hide();
+    $('.carousel-control-next').show();
+  } if($('.carousel-inner .carousel-item:last').hasClass('active')) {
+    $('.carousel-control-prev').show();
+    $('.carousel-control-next').hide();
+  } else{
+    $('.carousel-control').show();
+  }
+
+});
+      
+
+
+
+// $('#carouselExampleControls1').on('slid', '', checkitem);  // on caroussel move
+// $('#carouselExampleControls1').on('slid.bs.carousel', '', checkitem); // on carousel move
+
+// $(document).ready(function(){               // on document ready
+//     checkitem();
+// });
+
+// function checkitem()                        // check function
+// {
+//     var $this = $('#carouselExampleControls1');
+//     if($('.carousel-inner .carousel-item:first').hasClass('active')) {
+//         $this.children('.carousel-control-prev').hide();
+//         $this.children('.right.carousel-control').show();
+//     } else if($('.carousel-inner .carousel-item:last').hasClass('active')) {
+//         $this.children('.carousel-control-prev').show();
+//         $this.children('.carousel-control-next').hide();
+//     } else {
+//         $this.children('.carousel-control').show();
+//     } 
+// }
     </script>
   </body>
 </html>
