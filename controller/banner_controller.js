@@ -170,6 +170,20 @@
         res.redirect("/admin/login.html");
       }
     });
+    //banner images for index page
+    app.get("/banners", function (req, res) {
+        MongoClient.connect(url, function (err, db) {
+          if (err) throw err;
+          var dbo = db.db("coupon");
+
+          dbo
+            .collection("banner")
+            .find()
+            .toArray(function (err, documents) {
+              res.send(documents);
+            });
+        });
+    });
 
     app.post("/save_category", function (req, res) {
       if (req.session.user) {

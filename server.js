@@ -636,22 +636,22 @@ app.get("/product_details/:model?", (req, res, next) => {
   });
 });
 
-app.get("/", function (req, res, next) {
-  MongoClient.connect(url, function (err, db) {
-    if (err) throw err;
-    var dbo = db.db("coupon");
+// app.get("/", function (req, res, next) {
+//   MongoClient.connect(url, function (err, db) {
+//     if (err) throw err;
+//     var dbo = db.db("coupon");
 
-    dbo
-      .collection("banner")
-      .find()
-      .toArray(function (err, result) {
-        res.render("index", {
-          banner: result,
-        });
-        console.log(result);
-      });
-  });
-});
+//     dbo
+//       .collection("banner")
+//       .find()
+//       .toArray(function (err, result) {
+//         res.render("index", {
+//           banners: result,
+//         });
+//         console.log(result);
+//       });
+//   });
+// });
 
 
 

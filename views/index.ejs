@@ -156,6 +156,43 @@
         object-fit: scale-down;
         
       }
+      .icons{
+        top:70%;
+        left:0;
+        transform: translateY(0%);
+        position: fixed;
+        z-index: 1000;
+      }
+      .icons ul{
+        padding: initial;
+      }
+      .icons ul li{
+        height: 40px;
+        width: 40px;
+        list-style-type: none;
+        padding-left: 12px;
+        padding-top: 6px;
+        margin-top: 5px;
+        color:#fff;
+        
+      }
+      .facebook{
+        background: #3b5998;
+      }
+      .youtube{
+        background: #ff0000;
+      }
+      .instagram{
+        background-image: linear-gradient(140deg,#F7BD3B , #F5003D,#2038DE);
+      }
+      .twitter{
+        background: #55acee;
+      }
+      .icons ul li:hover{
+        padding-left: 20px;
+        width: 60px;
+        transition:  1s ease-in;
+      }
       
       @media only screen and (max-width: 600px) {
         #navbarSupportedContent {
@@ -282,28 +319,8 @@
       <div class="row mt-5">
         <div class="col-md-12 edit-carousel">
           <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img
-                  class="d-block"
-                  src="https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg"
-                  alt="First slide"
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  class="d-block"
-                  src="https://mdbootstrap.com/img/Photos/Slides/img%20(46).jpg"
-                  alt="Second slide"
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  class="d-block"
-                  src="https://mdbootstrap.com/img/Photos/Slides/img%20(47).jpg"
-                  alt="Third slide"
-                />
-              </div>
+            <div class="carousel-inner" id="carousel-inner-id">
+              
             </div>
             <a
               class="carousel-control-prev carousel-control"
@@ -589,6 +606,9 @@
                       </a>
                     </div>
                     <%} ) %>
+                    
+                      <a href="/allStores" class="single__shop mx-1 mb-2 my-0" style="display: flex; justify-content: center; align-items: center;font-size: 25px;"><p class="my-auto">View All Shops</p></a>
+                    
                 </div>
             </div>
             </div>
@@ -815,7 +835,7 @@
       style="background-color: #ffffff"
     >
       <!-- newsletter start-->
-      <div class="container" style="background-color: ;">
+      <div class="container" style="background: lightblue; border-radius: 15px;">
         <!-- Grid row-->
         <div class="row py-4 d-flex align-items-center justify-content-between">
           <!-- Grid column -->
@@ -856,7 +876,7 @@
 
           <!-- Grid column -->
           <div class="col-md-6 d-flex justify-content-end">
-            <img class="w-50" src="./images/undraw_happy_announcement_ac67.png" alt="">
+            <img class="w-50" style="background: lightblue;opacity: 2;" src="./images/undraw_happy_announcement_ac67.png" alt="">
           </div>
           <!-- Grid column -->
         </div>
@@ -1073,6 +1093,14 @@
       </div>
     </div>
     <div id="overlay"></div>
+    <div class="icons">
+      <ul>
+        <a href=""><li class="facebook"><i class="fab fa-facebook"></i></li></a>
+        <a href=""><li class="youtube"><i class="fab fa-youtube"></i></li></a>
+        <a href=""><li class="instagram"><i class="fab fa-instagram"></i></li></a>
+        <a href=""><li class="twitter"><i class="fab fa-twitter"></i></li></a>
+      </ul>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -1261,6 +1289,43 @@ var debounce = function (fn, delay) {
       categoriesList();
     </script>
 
+    <script>
+      const carousel_Inner_Id = document.getElementById("carousel-inner-id");
+      const bannerList = async() =>{
+        const res = await fetch("http://localhost:8081/banners");
+        const bannersResponse = await res.json();
+        console.log(bannersResponse[0].image);
+        const banners =
+        ` <div class="carousel-item active">
+                <img
+                  class="d-block"
+                  src="${bannersResponse[0] && bannersResponse[0].image}"
+                  alt="Second slide"
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  class="d-block"
+                  src="${bannersResponse[1] && bannersResponse[1].image}"
+                  alt="Second slide"
+                />
+              </div>
+
+              <div class="carousel-item">
+                <img
+                  class="d-block"
+                  src="${bannersResponse[2] && bannersResponse[2].image}"
+                  alt="Second slide"
+                />
+              </div>
+              
+              ` 
+        ;
+        carousel_Inner_Id.innerHTML = banners
+      }
+      bannerList();
+    </script>
+
     <!-- carousel next previous button hide -->
     <script>
       $('#carouselExampleControls1').carousel({
@@ -1280,30 +1345,6 @@ var debounce = function (fn, delay) {
   }
 
 });
-      
-
-
-
-// $('#carouselExampleControls1').on('slid', '', checkitem);  // on caroussel move
-// $('#carouselExampleControls1').on('slid.bs.carousel', '', checkitem); // on carousel move
-
-// $(document).ready(function(){               // on document ready
-//     checkitem();
-// });
-
-// function checkitem()                        // check function
-// {
-//     var $this = $('#carouselExampleControls1');
-//     if($('.carousel-inner .carousel-item:first').hasClass('active')) {
-//         $this.children('.carousel-control-prev').hide();
-//         $this.children('.right.carousel-control').show();
-//     } else if($('.carousel-inner .carousel-item:last').hasClass('active')) {
-//         $this.children('.carousel-control-prev').show();
-//         $this.children('.carousel-control-next').hide();
-//     } else {
-//         $this.children('.carousel-control').show();
-//     } 
-// }
     </script>
   </body>
 </html>
